@@ -52,11 +52,12 @@ def _repo(tmp_path: Path) -> tuple[Path, Path]:
     return repo, origin
 
 
-def _run(repo: Path, *args: str) -> dict:
+def _run(repo: Path, *args: str, env: dict[str, str] | None = None) -> dict:
     done = subprocess.run(
         ["python3", str(SCRIPT), "--root", str(repo), "--json", *args],
         capture_output=True,
         text=True,
+        env=env,
     )
     return json.loads(done.stdout)
 
@@ -96,3 +97,31 @@ def test_a_review_item_not_confirmed_refuses_and_a_confirmed_one_passes(tmp_path
     )
     out = _run(repo, "--ref", "public/candidate")
     assert out["pushed"] and out["audit"] == "CLEAN"
+
+def test_candidate_builder_supplies_its_own_commit_identity(tmp_path: Path) -> None:
+    repo, origin = _repo(tmp_path)
+    home = tmp_path / "empty-home"
+    home.mkdir()
+    env = dict(os.environ, HOME=str(home))
+    for key in (
+        "GIT_AUTHOR_NAME",
+        "GIT_AUTHOR_EMAIL",
+        "GIT_COMMITTER_NAME",
+        "GIT_COMMITTER_EMAIL",
+    ):
+        env.pop(key, None)
+
+    out = _run(repo, "--ref", "public/candidate", env=env)
+
+    assert out["pushed"], out
+    identity = _git(
+        origin,
+        "show",
+        "-s",
+        "--format=%an <%ae>%n%cn <%ce>",
+        "refs/heads/public/candidate",
+    )
+    assert identity == (
+        "OpenCounsel candidate builder <candidate@opencounsel.local>\n"
+        "OpenCounsel candidate builder <candidate@opencounsel.local>"
+    )
