@@ -4,73 +4,76 @@
 
 # OpenCounsel
 
-**OpenCounsel turns a damaged legal brief into a source-verified, filing-ready package, on your own
-machine.** It repairs the Word production, compiles linked tables of contents and authorities,
-checks the cited opinions you upload against the brief, and hands back an auditable package with a
-correction ledger for lawyer review. No client prose goes to a hosted model, and the original is
-never overwritten.
+**Damaged brief in. Source-verified, filing-ready package out, on your own machine.**
+
+<p align="center">
+  <a href="#see-it">See it</a> ·
+  <a href="#why-opencounsel">Why OpenCounsel</a> ·
+  <a href="#the-method-and-the-patent">The method</a> ·
+  <a href="#who-it-is-for">Who it is for</a> ·
+  <a href="#contact">Contact</a>
+</p>
+
+OpenCounsel repairs the Word production of a brief, builds linked tables of contents and
+authorities, checks the opinions you upload against what the brief cites, and hands back one
+package with a correction ledger for lawyer review. It runs locally, sends no client prose to a
+hosted model, and never overwrites the original.
 
 **[Finalist, OpenAI Build Week (Work & Productivity)](https://developers.openai.com/blog/build-week-winners)**,
-selected from 8,000+ projects by ~47,000 builders. OpenAI's announcement lists it as *"OpenCounsel
-turns damaged legal briefs into source-verified, filing-ready packages."*
-
-Patent pending (US provisional application, NexusPL LLC) · Runs locally in one container ·
-Inquiries: stephen.schweizer [at] gmail [dot] com
+selected from 8,000+ projects by ~47,000 builders. OpenAI's announcement: *"OpenCounsel turns
+damaged legal briefs into source-verified, filing-ready packages."* Patent pending.
 
 ## The problem
 
 A brief can be finished on the merits and still fail on the last mile.
 
-- **Filings get bounced** for formatting, pagination and linking defects (S.D.N.Y., *Electronic
-  Case Filing Rules & Instructions*).
-- **Cite-checking and the table of authorities take hours** against *The Bluebook* (21st ed. 2020).
+- **Filings bounce** for formatting, pagination and linking defects (S.D.N.Y., *Electronic Case
+  Filing Rules & Instructions*).
+- **Cite-checking and the table of authorities eat hours** against *The Bluebook* (21st ed. 2020).
 - **Hallucinated citations draw sanctions.** *Mata v. Avianca, Inc.*, No. 22-cv-1461 (PKC)
   (S.D.N.Y. June 22, 2023); *Park v. Kim*, 91 F.4th 610 (2d Cir. 2024).
-- **Courts ask how AI was used.** Judge Brantley Starr (N.D. Tex.), *Mandatory Certification
-  Regarding Generative Artificial Intelligence* (May 30, 2023).
+- **Courts want to know how AI was used.** Judge Brantley Starr (N.D. Tex.), *Mandatory
+  Certification Regarding Generative Artificial Intelligence* (May 30, 2023).
 - **The duty stays with the lawyer.** ABA Formal Opinion 512 (July 29, 2024) puts competence,
-  confidentiality and supervision on counsel, so sending client matter to a hosted model trades one
+  confidentiality and supervision on counsel; sending client matter to a hosted model trades one
   risk for another.
-- **The answer has to be on paper.** When a client or a court asks how a filing was produced, Rule
-  11's reasonable inquiry needs a record, not a recollection (Fed. R. Civ. P. 11(b)).
+- **The record has to exist.** Rule 11's reasonable inquiry is answered on paper, not from memory
+  (Fed. R. Civ. P. 11(b)).
 
-Each pain, what answers it, the evidence and the public source are mapped in
-[docs/PAIN_POINTS.md](docs/PAIN_POINTS.md).
+Every pain, its answer, the evidence and the source: [docs/PAIN_POINTS.md](docs/PAIN_POINTS.md).
 
-## What it does
+## What you get
 
 <p align="center">
   <img src="docs/img/filing-pipeline.svg" alt="Damaged brief, then production, then verification, then a filing-ready package with its ledger" width="100%">
 </p>
 
-- **A filing that passes the clerk's checklist.** The court profile is applied: typography, heading
-  hierarchy, a linked table of contents, a categorized table of authorities, Roman front matter and
-  Arabic body page 1, published as editable DOCX plus PDF.
+- **A filing that clears the clerk's checklist.** Court typography and heading hierarchy, a linked
+  table of contents, a categorized table of authorities, Roman front matter and Arabic body page 1,
+  as editable DOCX and PDF.
 - **Citations checked against the source.** Each uploaded opinion is bound to the authority it
-  claims to be; source identity and exact quotations are checked; anything mismatched, undeclared
-  or malformed is refused rather than softened.
-- **A ledger instead of silent edits.** Every change is an entry the lawyer can accept or reject,
-  and every flagged item waits for review.
-- **One package to hand over.** The final review ZIP holds the filing and its correction,
-  publication, source-verification, link and hash records.
+  claims to be, and its identity and the brief's exact quotations are checked. Anything mismatched,
+  undeclared or malformed is refused, not softened.
+- **A ledger, not silent edits.** Every change is an entry the lawyer can accept or reject.
+- **One package to hand over.** The review ZIP holds the filing and its correction, publication,
+  source-verification, link and hash records.
 
-## Why it is different
+## Why OpenCounsel
 
 <p align="center">
   <img src="docs/img/audit-trail.svg" alt="The audit trail of the public demonstration run and the fields of one ledger entry" width="100%">
 </p>
 
-- **Local and private.** One locked-down container on your own machine. The network and model
-  policies are disabled in the service contract, so client prose never leaves the building.
-- **Auditable by construction.** Originals are immutable, every artifact is hash-bound to its
-  inputs, and every correction is a ledger entry with its review status. An AI-use certification
-  can be written from the receipts rather than from memory.
-- **Verified against sources, honestly.** Identity and exact quotation are checked
-  deterministically. A hyperlink is navigation evidence, not proof of support, and whether a case
-  supports a characterization stays the lawyer's call.
-- **A deterministic core.** Validators own file safety, page labels, citations, provenance, links
-  and hashes. The same input gives the same output, and each automated decision explains itself in
-  one plain-English sentence, identically every time.
+- **Private by default.** One locked-down container on your machine. Network and model access are
+  switched off in the service contract, so client matter never leaves the building.
+- **Auditable by construction.** The original is immutable, every artifact is hash-bound to its
+  inputs, and every correction carries its review status. An AI-use certification can be written
+  from the receipts instead of from memory.
+- **Honest about what it verified.** Identity and exact quotations are checked mechanically. A
+  hyperlink is navigation, not proof of support, and whether a case supports a characterization
+  stays the lawyer's call.
+- **Deterministic.** The same input gives the same output, and each automated decision explains
+  itself in the same plain-English sentence every time.
 
 ## See it
 
@@ -82,17 +85,16 @@ docker compose ps
 ```
 
 When the `opencounsel` service reports `healthy`, open `http://127.0.0.1:8765` and select
-**Run the OpenAI filing demo**. It runs on a privacy-safe reconstruction of OpenAI Defendants'
+**Run the OpenAI filing demo**. The demo uses a privacy-safe reconstruction of OpenAI Defendants'
 public February 26, 2024 Dkt. 52 motion in *The New York Times Company v. Microsoft Corporation*.
 On the 2026-09-27 verification run it produced an 8-page filing with 10 TOC entries, 5 TOA
-authorities, 31 formatting corrections applied and 5 items for review, in about ten seconds
+authorities, 31 formatting corrections and 5 items for review, in about ten seconds
 ([receipt](docs/PUBLISH_READINESS.md)).
 
 <details>
 <summary>Readiness check, stopping and cleanup</summary>
 
-In GitHub Codespaces, open the private forwarded URL for port `8765`; do not change the port
-visibility to public.
+In GitHub Codespaces, open the private forwarded URL for port `8765`; do not make the port public.
 
 ```console
 curl --fail http://127.0.0.1:8765/healthz   # readiness
@@ -104,27 +106,35 @@ docker compose down --volumes                # remove the service and the whole 
 
 ## Who it is for
 
-- **Managing partners** who carry the sanctions and supervision risk and want a record of how every
+- **Managing partners** who carry the sanctions and supervision risk and want a record of how each
   filing was produced.
-- **Litigation-support and practice-support leads** who spend the night before a deadline on
-  tables, pagination and cite-checks.
-- **Legal-operations and IT buyers** who need automation that keeps client matter on the firm's own
-  machines and behaves the same way every time.
-- **Investors** looking at a finalist-recognized product with a patent-pending method underneath
-  and a product line built on one core.
+- **Litigation-support leads** who spend the night before a deadline on tables, pagination and
+  cite-checks.
+- **Legal-operations and IT buyers** who need automation that keeps client matter in-house and
+  behaves the same way every time.
+- **Investors** looking at a finalist-recognized product with a patent-pending method and a
+  product line on one core.
 
 ## The method and the patent
 
-Every check in OpenCounsel is a decision over a finite set of reads. The method behind the line,
-the **SchweizerMethod** (consumer-relative substitution over finite incidence presentations, decided
-by the presentation's own search), is the subject of a **US provisional patent application filed by
-NexusPL LLC in September 2026**. It is what makes a check *drainable*: a decision that recurs on the
-same reads is served by a rule with a receipt, and only the residual ever reaches a model. It is also
-what makes an explanation canonical.
+Most AI tools answer the same question from scratch every time. OpenCounsel keeps a record
+instead: whenever it decides something, it writes down what it looked at and what it found, next
+to the answer. That record is what a buyer pays for.
 
-**Why did it decide that.** Every automated decision is its class in a quotient; the panel lifts
-that class to one plain-English sentence plus its witness, identically every time, with no fresh
-generation (`opencounsel.explain`, the "Why did it decide that" tab in the review).
+- **Repeat checks are served from a recorded rule, with a receipt.** When the same check comes up
+  on the same inputs, the recorded answer is served, and the receipt shows exactly why.
+- **Only new cases reach a model.** Work is redone only when something it depended on has changed,
+  so model spend falls as the record grows (see the drain chart below).
+- **Every explanation is the same sentence every time.** The "Why did it decide that" panel turns
+  each decision into one plain-English sentence plus the fact that decided it, read from the record
+  rather than generated afresh (`opencounsel.explain`).
+
+This is the subject of a **US provisional patent application filed by Stephen Schweizer (September
+2026), patent pending**, titled *"Recording reads beside stored results to control reuse and
+recomputation, and testing kept reads as a key against the answers owed."* In its words:
+
+> The method described here puts one question to every request: given everything already learned
+> and checked, what is the least new work that produces this answer now?
 
 <p align="center">
   <img src="docs/img/decision-to-rule.svg" alt="How a decision becomes a rule: model answer, witness, rule, receipt" width="100%">
@@ -132,8 +142,9 @@ generation (`opencounsel.explain`, the "Why did it decide that" tab in the revie
 
 ## Proofs
 
-The guarantees are theorems in the line's Lean library (`formal/Institutional`,
-nexuspllc/institutional_stack), checked without `sorry`.
+The core guarantees, including the confidentiality boundary and the faithful explanation, are
+machine-checked theorems in Lean (`formal/Institutional` in nexuspllc/institutional_stack), with no
+unproved steps (`sorry`).
 
 <details>
 <summary>The theorem table</summary>
@@ -153,16 +164,15 @@ nexuspllc/institutional_stack), checked without `sorry`.
 
 ## Product line and roadmap
 
-OpenCounsel is the commercial flagship of a line that runs on one core: one program (Nym), the
-organism round with heal and the spore, the drain loop and the money cascade, Meton-QS / Stagehand
-MCP as the operator surface, and **SVRF** ([nybarius/SVRF](https://github.com/nybarius/SVRF), public)
-as the merge train. The other products are demand families regrown from the same spore.
+OpenCounsel is the flagship of a product line that shares one core. The same core runs
+**SVRF** ([nybarius/SVRF](https://github.com/nybarius/SVRF), public), a merge queue for AI coding
+agents, along with the operator tools that run the line.
 
 <p align="center">
   <img src="docs/img/product-line.svg" alt="One core growing OpenCounsel, SVRF, the drain, Meton-QS, the nexus and the saga/MUD view" width="100%">
 </p>
 
-The drain, measured on our own workload:
+How much model work has become recorded rules, measured on our own workload:
 
 <p align="center">
   <img src="docs/img/drain-curve.svg" alt="Share of strong-model calls turned into served rules per day, our own workload" width="100%">
@@ -170,16 +180,15 @@ The drain, measured on our own workload:
 
 **Today:** a private, local, single-user product for S.D.N.Y./E.D.N.Y. motion memoranda.
 **Next** ([docs/ROADMAP.md](docs/ROADMAP.md)): a record-citation workbench; more court and judge
-filing profiles; verified proposition support with point-in-time law, kept separate from the
-deterministic identity and quotation checks; reviewed-Word reconciliation; and a binder and practice
-control plane for deadlines, tasks and privilege review.
+profiles; verified proposition support with point-in-time law, kept apart from the mechanical
+identity and quotation checks; reviewed-Word reconciliation; and a practice control plane for
+deadlines, tasks and privilege review.
 
 ## Contact
 
-Pilots, licensing, partnership and investment:
-**stephen.schweizer [at] gmail [dot] com**
+Pilots, licensing, partnership and investment: **stephen.schweizer [at] gmail [dot] com**
 
-The one-page brief is [docs/BRIEF.md](docs/BRIEF.md).
+The one-page brief: [docs/BRIEF.md](docs/BRIEF.md).
 
 ---
 
@@ -239,10 +248,10 @@ license is selected and committed.
 <details>
 <summary>Back office</summary>
 
-The operator side of the product: the organism controls (`heal`, `spore`, the saga and the MUD),
-admission and receipts, the merge train, and the drain and money dashboard. They live in
-nexuspllc/institutional_stack (`tools/organism.py`, `tools/organism_drain.py`, `tools/organism_saga.py`,
-`tools/organism_mud.py`) and are described in [docs/GAP_REPORT.md](docs/GAP_REPORT.md).
+The operator side of the product line (the self-repairing runtime, admission and receipts, the merge
+train, and the drain and cost dashboard) lives in nexuspllc/institutional_stack
+(`tools/organism.py`, `tools/organism_drain.py`, `tools/organism_saga.py`, `tools/organism_mud.py`)
+and is described in [docs/GAP_REPORT.md](docs/GAP_REPORT.md).
 
 </details>
 
@@ -253,8 +262,7 @@ This repository is private until the operator says otherwise. The gate before an
 the privilege audit, a deterministic scan of every file and history blob
 (`python3 scripts/privilege_audit.py --root .`), with the manifest of retained legal fixtures and
 their public sources in `docs/LEGAL_FIXTURES.json` and the checklist in
-[docs/PUBLISH_READINESS.md](docs/PUBLISH_READINESS.md). No client file or client-derived fixture
-belongs here; the demonstration uses a privacy-safe reconstruction of a public Dkt. 52 filing.
+[docs/PUBLISH_READINESS.md](docs/PUBLISH_READINESS.md).
 
 </details>
 

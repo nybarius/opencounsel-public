@@ -1,6 +1,7 @@
 """RED: the public-readiness contract of the OpenCounsel repository.
 
-The README opens with the buyer's problem in plain English, then the method and the patent, then the
+The README opens with the buyer's problem in plain English, then the method and the patent (plain
+English, the actual filer, the provisional's title quoted), then the
 proofs, then the product line; OpenCounsel is a Build Week finalist, never a winner; the pain-point
 map cites public sources and carries no unsourced statistic; the brief is one page with the ask left
 to the operator; the graphics are hand-authored SVGs readable in light and dark themes; the
@@ -31,7 +32,14 @@ def test_readme_opens_with_the_buyers_problem_then_method_proofs_product_line() 
     # The credential links to OpenAI's announcement; its URL slug is not a claim about us.
     prose = text.lower().replace("developers.openai.com/blog/build-week-winners", "")
     assert "finalist" in prose and "winner" not in prose
-    assert "provisional" in text.lower() and "SchweizerMethod" in text
+    # The patent note is plain English, names the actual filer and quotes the provisional's title.
+    assert "provisional" in text.lower() and "Stephen Schweizer" in text
+    assert "Recording reads beside stored results" in text
+    for public in ("README.md", "docs/BRIEF.md"):
+        body = _read(public)
+        assert "SchweizerMethod" not in body, public
+        assert "finite incidence presentations" not in body, public
+        assert not re.search(r"provisional[^.]*NexusPL|NexusPL[^.]*provisional", body), public
     assert "nybarius/SVRF" in text and "Why did it decide that" in text
 
 
