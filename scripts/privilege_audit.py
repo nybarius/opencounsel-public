@@ -9,8 +9,8 @@ Listed for review (exit 2), never shipped on a guess: a case caption not in
 `docs/LEGAL_FIXTURES.json`,
 the manifest of every retained legal fixture with its public source. Clean: exit 0. The history
 scan reads every blob reachable from any ref, so an old blob with such content refuses the tree
-even when the working tree is clean: the public repository gets a fresh history built by the
-spore regrow, never this one. Standard library only.
+even when the working tree is clean: the public repository gets a fresh history built by a
+fresh-root rebuild, never this one. Standard library only.
 """
 
 from __future__ import annotations

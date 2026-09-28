@@ -15,13 +15,13 @@ Nothing is published until the operator says so. Each line is a gate with its ow
       857078bd...cd202c; artifacts: corrections, document, front-matter, original-pdf, package, pdf,
       publication, sources. The web app's own tests also pass (`uv run pytest tests/test_web_app.py`).
 - [x] README opens with the value proposition and the finalist credential linked to OpenAI's
-      announcement, then the buyer's problem, then the method and the patent, then the proofs, then
-      the product line; OpenCounsel is named a Build Week finalist, never a winner.
-- [x] Product-line links (SVRF, drain, heal/spore, Meton-QS, nexus, saga/MUD).
+      announcement, then the buyer's problem, then the method and the patent in plain English, then
+      the contact; OpenCounsel is named a Build Week finalist, never a winner, and reads as a
+      freestanding product.
 - [x] Pain-point map with cited public sources and no unsourced statistic (`docs/PAIN_POINTS.md`).
-- [x] One-page brief with the ask left to the operator (`docs/BRIEF.md`).
-- [x] Hand-authored SVGs (hero, filing pipeline, audit trail, decision to rule, product line, drain
-      curve), no external services, readable in light and dark themes (`docs/img/`).
+- [x] One-page brief ending with a contact line (`docs/BRIEF.md`).
+- [x] Hand-authored SVGs (hero, filing pipeline, audit trail, decision to rule), no external
+      services, readable in light and dark themes (`docs/img/`).
 - [ ] Fresh public history: run `python3 scripts/build_public_candidate.py --root .
       --ref public/candidate --json` from an authenticated checkout after the gate. The first push
       has no parent; later updates parent only the observed candidate tip; unchanged trees do not

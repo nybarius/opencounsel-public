@@ -112,8 +112,7 @@ docker compose down --volumes                # remove the service and the whole 
   cite-checks.
 - **Legal-operations and IT buyers** who need automation that keeps client matter in-house and
   behaves the same way every time.
-- **Investors** looking at a finalist-recognized product with a patent-pending method and a
-  product line on one core.
+- **Investors** looking at a finalist-recognized product with a patent-pending method.
 
 ## The method and the patent
 
@@ -124,7 +123,7 @@ to the answer. That record is what a buyer pays for.
 - **Repeat checks are served from a recorded rule, with a receipt.** When the same check comes up
   on the same inputs, the recorded answer is served, and the receipt shows exactly why.
 - **Only new cases reach a model.** Work is redone only when something it depended on has changed,
-  so model spend falls as the record grows (see the drain chart below).
+  so the fresh work, and its cost, shrinks as the record grows.
 - **Every explanation is the same sentence every time.** The "Why did it decide that" panel turns
   each decision into one plain-English sentence plus the fact that decided it, read from the record
   rather than generated afresh (`opencounsel.explain`).
@@ -140,43 +139,7 @@ recomputation, and testing kept reads as a key against the answers owed."* In it
   <img src="docs/img/decision-to-rule.svg" alt="How a decision becomes a rule: model answer, witness, rule, receipt" width="100%">
 </p>
 
-## Proofs
-
-The core guarantees, including the confidentiality boundary and the faithful explanation, are
-machine-checked theorems in Lean (`formal/Institutional` in nexuspllc/institutional_stack), with no
-unproved steps (`sorry`).
-
-<details>
-<summary>The theorem table</summary>
-
-| guarantee | theorem |
-|---|---|
-| A read the demand does not consume is absent from the cut (the confidentiality boundary) | `RepoMaterialization.unread_is_absent` |
-| The explanation is faithful: the same sentence iff the same class | `ExplanationLift.explanation_faithful` |
-| The explanation is idempotent: lower it and lift it again, the same sentence | `ExplanationLift.explanation_idempotent` |
-| Every consumer reads the lowered explanation as the decision | `ExplanationLift.explanation_read_as_decision` |
-| A probe set covering the classes, answered once, is the model on the whole demand | `DrainLaw.harvest_complete` |
-| Serving from the memo equals the model on drained classes | `DrainLaw.served_memo_equals_model` |
-| Admission never depends on the candidate's own claims | `SolveReduceDescend.admission_independent` |
-| The organism repairs itself with no outside supervisor | `OrganismDiagonal.diagonal_no_meta_level` |
-
-</details>
-
-## Product line and roadmap
-
-OpenCounsel is the flagship of a product line that shares one core. The same core runs
-**SVRF** ([nybarius/SVRF](https://github.com/nybarius/SVRF), public), a merge queue for AI coding
-agents, along with the operator tools that run the line.
-
-<p align="center">
-  <img src="docs/img/product-line.svg" alt="One core growing OpenCounsel, SVRF, the drain, Meton-QS, the nexus and the saga/MUD view" width="100%">
-</p>
-
-How much model work has become recorded rules, measured on our own workload:
-
-<p align="center">
-  <img src="docs/img/drain-curve.svg" alt="Share of strong-model calls turned into served rules per day, our own workload" width="100%">
-</p>
+## Roadmap
 
 **Today:** a private, local, single-user product for S.D.N.Y./E.D.N.Y. motion memoranda.
 **Next** ([docs/ROADMAP.md](docs/ROADMAP.md)): a record-citation workbench; more court and judge
@@ -246,16 +209,6 @@ license is selected and committed.
 </details>
 
 <details>
-<summary>Back office</summary>
-
-The operator side of the product line (the self-repairing runtime, admission and receipts, the merge
-train, and the drain and cost dashboard) lives in nexuspllc/institutional_stack
-(`tools/organism.py`, `tools/organism_drain.py`, `tools/organism_saga.py`, `tools/organism_mud.py`)
-and is described in [docs/GAP_REPORT.md](docs/GAP_REPORT.md).
-
-</details>
-
-<details>
 <summary>Publishing</summary>
 
 This repository is private until the operator says otherwise. The gate before any public cut is
@@ -300,7 +253,7 @@ transcript—is the authorship and verification record. See
 ### Documentation
 
 - Buyer and release: [one-page brief](docs/BRIEF.md) · [pain-point map](docs/PAIN_POINTS.md) ·
-  [roadmap](docs/ROADMAP.md) · [gap report](docs/GAP_REPORT.md) ·
+  [roadmap](docs/ROADMAP.md) ·
   [publish-readiness checklist](docs/PUBLISH_READINESS.md) · [project state](docs/PROJECT_STATE.md) ·
   [Build Week recording and submission kit](docs/BUILD_WEEK_SUBMISSION.md)
 - Product: [architecture](docs/ARCHITECTURE.md) · [brief pipeline](docs/BRIEF_PIPELINE.md) ·

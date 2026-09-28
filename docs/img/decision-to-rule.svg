@@ -34,5 +34,5 @@ text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,san
 <text x="752" y="158">Replayable, and explains</text><text x="752" y="176">itself in plain English</text>
 </g>
 <rect x="24" y="216" width="912" height="36" rx="10" fill="none" class="rule" stroke-dasharray="4 4"/>
-<text x="480" y="239" text-anchor="middle" font-size="12.5" fill="currentColor">“Why did it decide that” is the rule plus its witness. ExplanationLift: the same class gives the same sentence, every time.</text>
+<text x="480" y="239" text-anchor="middle" font-size="12.5" fill="currentColor">“Why did it decide that” is the rule plus its witness. The same class always gives the same sentence.</text>
 </svg>

@@ -1,16 +1,18 @@
 """RED: the public-readiness contract of the OpenCounsel repository.
 
-The README opens with the buyer's problem in plain English, then the method and the patent (plain
-English, the actual filer, the provisional's title quoted), then the
-proofs, then the product line; OpenCounsel is a Build Week finalist, never a winner; the pain-point
-map cites public sources and carries no unsourced statistic; the brief is one page with the ask left
-to the operator; the graphics are hand-authored SVGs readable in light and dark themes; the
-publish-readiness checklist and the gap report exist; the privilege gate is part of the development
-gate.
+OpenCounsel reads as a freestanding product. The README opens with the buyer's problem in plain
+English, then the method and the patent (plain English, the actual filer, the provisional's title
+quoted), then the contact; neither the README, the one-page brief nor any doc the README links
+refers to a wider product line, its internal components or a theorem library. OpenCounsel is a
+Build Week finalist, never a winner; the pain-point map cites public sources and carries no
+unsourced statistic; the brief is one page and ends with a contact line; the graphics are
+hand-authored SVGs readable in light and dark themes; the publish-readiness checklist exists; the
+privilege gate is part of the development gate.
 """
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
@@ -21,12 +23,41 @@ def _read(rel: str) -> str:
     return (ROOT / rel).read_text(encoding="utf-8")
 
 
-def test_readme_opens_with_the_buyers_problem_then_method_proofs_product_line() -> None:
+# References to the wider line that a freestanding OpenCounsel page must not carry.
+_LINE_REFERENCES = (
+    r"\bNym\b",
+    r"\b[Oo]rganism",
+    r"\b[Ss]pore",
+    r"\b[Hh]eal\b",
+    r"\b[Dd]rain",
+    r"\bSVRF\b",
+    r"\bMeton",
+    r"\b[Nn]exus\b",
+    r"\b[Ss]aga\b",
+    r"\bMUD\b",
+    r"institutional_stack",
+    r"formal/Institutional",
+    r"\bLean\b",
+    r"\b[Tt]heorem",
+    r"[Pp]roduct[ -]line",
+    r"SchweizerMethod",
+    r"finite incidence presentations",
+    r"operator to complete",
+)
+
+
+def _public_docs() -> list[str]:
+    readme = _read("README.md")
+    linked = sorted(set(re.findall(r"\]\((docs/[^)#]+\.(?:md|json))\)", readme)))
+    return ["README.md", "docs/BRIEF.md", *linked]
+
+
+def test_readme_opens_with_the_buyers_problem_then_the_method_then_contact() -> None:
     text = _read("README.md")
     heads = [m.group(1).strip() for m in re.finditer(r"^## (.+)$", text, re.M)]
     order = [
         next(i for i, h in enumerate(heads) if key in h.lower())
-        for key in ("problem", "method", "proof", "product line")
+        for key in ("problem", "method", "contact")
     ]
     assert order == sorted(order), heads
     # The credential links to OpenAI's announcement; its URL slug is not a claim about us.
@@ -35,12 +66,32 @@ def test_readme_opens_with_the_buyers_problem_then_method_proofs_product_line() 
     # The patent note is plain English, names the actual filer and quotes the provisional's title.
     assert "provisional" in text.lower() and "Stephen Schweizer" in text
     assert "Recording reads beside stored results" in text
-    for public in ("README.md", "docs/BRIEF.md"):
-        body = _read(public)
-        assert "SchweizerMethod" not in body, public
-        assert "finite incidence presentations" not in body, public
+    assert "Why did it decide that" in text
+    assert "stephen.schweizer [at] gmail [dot] com" in text
+
+
+# A dated operator confirmation is a historical record: it keeps its exact bytes and is not scanned.
+_HISTORICAL_CONFIRMATIONS = {"docs/LEGAL_FIXTURES.json": ("2026-09-27",)}
+
+
+def _scannable(rel: str) -> str:
+    body = _read(rel)
+    dates = _HISTORICAL_CONFIRMATIONS.get(rel)
+    if dates:
+        manifest = json.loads(body)
+        for date in dates:
+            manifest["operator_confirmed"].pop(date)
+        body = json.dumps(manifest)
+    return body
+
+
+def test_public_docs_are_freestanding() -> None:
+    for public in _public_docs():
+        body = _scannable(public)
+        for pattern in _LINE_REFERENCES:
+            assert not re.search(pattern, body), (public, pattern)
         assert not re.search(r"provisional[^.]*NexusPL|NexusPL[^.]*provisional", body), public
-    assert "nybarius/SVRF" in text and "Why did it decide that" in text
+        assert not re.search(r"[A-Za-z0-9._%+-]+@gmail\.com|mailto:", body), public
 
 
 def test_pain_point_map_cites_public_sources_and_carries_no_unsourced_number() -> None:
@@ -55,39 +106,39 @@ def test_pain_point_map_cites_public_sources_and_carries_no_unsourced_number() -
     assert not re.search(r"\b\d{2,3}%", text)  # no unsourced percentage anywhere
 
 
-def test_the_brief_is_one_page_with_the_ask_left_to_the_operator() -> None:
+def test_the_brief_is_one_page_and_ends_with_a_contact_line() -> None:
     text = _read("docs/BRIEF.md")
     assert len(text.splitlines()) <= 80
-    for section in ("Problem", "Solution", "Why now", "Proof points", "Product line", "The ask"):
+    for section in ("Problem", "Solution", "Why now", "Proof points", "Contact"):
         assert section in text, section
     assert "finalist" in text.lower() and "winner" not in text.lower()
-    assert "[operator to complete]" in text
+    assert "Stephen Schweizer" in text and "Recording reads beside stored results" in text
+    assert "stephen.schweizer [at] gmail [dot] com" in text
 
 
 def test_graphics_are_hand_authored_svgs_readable_in_both_themes() -> None:
-    for name in ("filing-pipeline", "decision-to-rule", "drain-curve", "product-line"):
+    for name in ("hero", "filing-pipeline", "audit-trail", "decision-to-rule"):
         svg = _read(f"docs/img/{name}.svg")
         assert svg.lstrip().startswith("<svg") and "currentColor" in svg
         # no external services
         assert "http://" not in svg.replace("http://www.w3.org", "") and "https://" not in svg
-    assert "our own workload" in _read("docs/img/drain-curve.svg").lower()
+        for pattern in _LINE_REFERENCES:
+            assert not re.search(pattern, svg), (name, pattern)
+    for retired in ("product-line", "drain-curve"):
+        assert not (ROOT / f"docs/img/{retired}.svg").exists(), retired
 
 
-def test_readiness_checklist_gap_report_and_gate() -> None:
+def test_readiness_checklist_and_gate() -> None:
     check = _read("docs/PUBLISH_READINESS.md")
     for item in (
         "privilege audit",
         "demo verified",
         "patent",
         "finalist",
-        "product line",
         "fresh public history",
         "excluded",
     ):
         assert item in check.lower(), item
-    gap = _read("docs/GAP_REPORT.md")
-    for word in ("symbolic-ai", "drain", "heal", "spore", "Meton", "SVRF", "unread_is_absent"):
-        assert word in gap, word
     assert "privilege_audit.py" in _read("README.md")
 
 
@@ -99,4 +150,3 @@ def test_the_ui_onboards_and_the_why_panel_carries_the_receipt() -> None:
     js = _read("src/opencounsel/web/static/app.js")
     assert "process_id" in js and "correction_id" in js  # the receipt beside every explanation
     assert "docs/PUBLISH_READINESS.md" in _read("README.md")
-

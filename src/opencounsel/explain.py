@@ -5,9 +5,8 @@ A ledgered correction is its class, ``(stage, item_type, application_status, rev
 explanation is a presentation of that class assembled from fixed word tables, never generated: the
 same class gives the same sentence (faithful), :func:`lower` parses the sentence back to its class
 and :func:`explain_class` lifts it again to the same sentence (idempotent), and the witness is the
-ledger note. The Lean statement is ``Institutional.ExplanationLift`` in
-nexuspllc/institutional_stack (``explanation_faithful``, ``explanation_idempotent``,
-``explanation_read_as_decision``).
+ledger note. Two corrections get the same sentence exactly when they are in the same class, and
+any reader that parses the sentence recovers the decision itself.
 """
 
 from __future__ import annotations

@@ -6,7 +6,7 @@ the manifest of public legal fixtures, non-public case facts under seal, PII, se
 credentials, private URLs and internal hostnames. Anything uncertain is listed for the operator's
 review and never shipped on a guess. The retained legal fixtures are named in
 `docs/LEGAL_FIXTURES.json` with their public source; the history scan reads every blob reachable
-from the branch, so a fresh public history is planned from the spore regrow, never the private
+from the branch, so a fresh public history is planned from a fresh-root rebuild, never the private
 history.
 """
 

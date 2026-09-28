@@ -9,9 +9,9 @@ Sending client matter to a hosted model to fix any of this trades one risk for a
 ## Solution
 OpenCounsel turns a broken brief into a filing-ready, auditable package, locally. Two deterministic
 passes (production, then source verification), immutable originals, a correction ledger for lawyer
-review, and receipts for every step. On the modern stack it adds drained checks (a recurring check
-becomes a rule served at $0), admission that cannot be argued with (fixed reads), and a "why did it
-decide that" panel that lifts any decision to plain English, identically every time.
+review, and receipts for every step. A repeat check is served from a recorded rule with its
+receipt, and a "why did it decide that" panel gives each decision in one plain-English sentence,
+identically every time.
 
 ## Why now
 Courts have sanctioned hallucinated citations (*Mata v. Avianca*, 2023) and issued AI-certification
@@ -25,15 +25,9 @@ not another chat window.
   "Recording reads beside stored results to control reuse and recomputation, and testing kept reads
   as a key against the answers owed". It is what lets a repeat check be served from a recorded rule
   with a receipt, and an explanation read the same way every time.
-- Live receipts: the drain loop on our own workload (see `docs/img/drain-curve.svg`), the privilege
-  gate on this repository, the two-pass Docker demonstration.
-- A theorem table (see README, Proofs): unread_is_absent, explanation_faithful,
-  explanation_idempotent, harvest_complete, served_memo_equals_model.
+- Live receipts: the two-pass Docker demonstration (8-page filing, 10 TOC entries, 5 TOA
+  authorities, 31 formatting corrections, 5 review items on the 2026-09-27 run) and the privilege
+  gate on this repository.
 
-## Product line
-One core (Nym, the organism, heal/spore) grows OpenCounsel, SVRF (the public merge train,
-nybarius/SVRF), the drain, Meton-QS/Metonym, the nexus and the saga/MUD operator view. OpenCounsel is
-the commercial flagship of that line.
-
-## The ask
-[operator to complete]
+## Contact
+Pilots, licensing, partnership and investment: stephen.schweizer [at] gmail [dot] com

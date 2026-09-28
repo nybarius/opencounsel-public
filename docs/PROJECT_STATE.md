@@ -2,9 +2,8 @@
 
 Updated: 2026-09-27
 
-- Current work: C10 on PR #35, `work/spore-public-ready-20260927`. The governing handoff is
-  `research/results/fable-handoff-20260927/HANDOFF.md`, section C10, at institutional_stack
-  commit `658d40f52aee3f9f86cec09921a8e65fb7781cbe`.
+- Last completed tranche: PR #35 (conformance donor contracts, audited candidate-history builder,
+  onboarding with receipts beside explanations).
 - The inherited RED tests are implemented: pinned symbolic-ai donor contracts, exactly 3/7
   supplied bindings and 6/11 supplied predicates, audited candidate-history builder, and
   three-step onboarding with process/correction receipts beside explanations.
