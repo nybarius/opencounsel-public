@@ -198,9 +198,10 @@ preserve privilege.
 <details>
 <summary>Current limits and licensing</summary>
 
-This is a private, local, single-user demonstration. Reviewed-Word reconciliation, additional court
-profiles, hosted deployment, native installers, OCR, accounts, billing, and multi-matter service are
-outside the submission scope.
+This is a local, single-user demonstration. The repository is public, but the demonstrated product
+keeps client matter on the user's machine. Reviewed-Word reconciliation, additional court profiles,
+hosted deployment, native installers, OCR, accounts, billing, and multi-matter service are outside
+the submission scope.
 
 OpenCounsel is designed toward a future open-source release, but this repository is not currently
 open source or FOSS. No license is granted and all rights are reserved unless and until an actual
@@ -211,11 +212,11 @@ license is selected and committed.
 <details>
 <summary>Publishing</summary>
 
-This repository is private until the operator says otherwise. The gate before any public cut is
-the privilege audit, a deterministic scan of every file and history blob
-(`python3 scripts/privilege_audit.py --root .`), with the manifest of retained legal fixtures and
-their public sources in `docs/LEGAL_FIXTURES.json` and the checklist in
-[docs/PUBLISH_READINESS.md](docs/PUBLISH_READINESS.md).
+This repository is the audited public cut. It was regrown from an audited tree without private
+development ancestry. Future public updates remain gated by the privilege audit, a deterministic
+scan of every file and history blob (`python3 scripts/privilege_audit.py --root .`), with the
+manifest of retained legal fixtures and their public sources in `docs/LEGAL_FIXTURES.json` and the
+checklist in [docs/PUBLISH_READINESS.md](docs/PUBLISH_READINESS.md).
 
 </details>
 

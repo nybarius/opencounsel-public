@@ -1,6 +1,6 @@
 # Publish-readiness checklist
 
-Nothing is published until the operator says so. Each line is a gate with its owner.
+This records the gate satisfied before the public cut and the same gate required for later public updates.
 
 - [x] Privilege audit: the candidate uses an exact Git tree snapshot and the existing scanner.
       The current source tree is CLEAN after replacing the unconfirmed citation-year captions
@@ -22,12 +22,12 @@ Nothing is published until the operator says so. Each line is a gate with its ow
 - [x] One-page brief ending with a contact line (`docs/BRIEF.md`).
 - [x] Hand-authored SVGs (hero, filing pipeline, audit trail, decision to rule), no external
       services, readable in light and dark themes (`docs/img/`).
-- [ ] Fresh public history: run `python3 scripts/build_public_candidate.py --root .
-      --ref public/candidate --json` from an authenticated checkout after the gate. The first push
-      has no parent; later updates parent only the observed candidate tip; unchanged trees do not
-      push. Remote read failures, unfamiliar ancestry and non-fast-forward updates are refused.
-      This stages a branch in the private repository and does not authorize public release.
-- [ ] The operator's go.
+- [x] Fresh public history: the public repository was regrown from the audited candidate tree
+      without private development ancestry. For later updates, `scripts/build_public_candidate.py`
+      still creates only `public/` candidate refs, parents only the observed public candidate tip,
+      pushes nothing for an unchanged tree, and refuses remote-read, ancestry, or non-fast-forward
+      ambiguity.
+- [x] Operator publication authorization was exercised for the public cut on 2026-09-28.
 
 ## Excluded or listed for the operator's review
 
