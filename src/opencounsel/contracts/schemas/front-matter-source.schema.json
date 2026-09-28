@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencounsel.local/schemas/front-matter-source.schema.json",
+  "title": "OpenCounsel Front Matter Source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "brief_sha256",
+    "toc",
+    "toa",
+    "excluded_authority_occurrence_count"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "brief_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "toc": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/tocEntry"}
+    },
+    "toa": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/toaEntry"}
+    },
+    "excluded_authority_occurrence_count": {"type": "integer", "minimum": 0}
+  },
+  "$defs": {
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "part",
+        "paragraph_index",
+        "start_offset",
+        "end_offset",
+        "original_text",
+        "citation_type"
+      ],
+      "properties": {
+        "part": {"type": "string", "minLength": 1, "maxLength": 128},
+        "paragraph_index": {"type": "integer", "minimum": 0},
+        "start_offset": {"type": "integer", "minimum": 0},
+        "end_offset": {"type": "integer", "minimum": 1},
+        "original_text": {"type": "string", "minLength": 1, "maxLength": 16384},
+        "citation_type": {"type": "string", "minLength": 1, "maxLength": 128}
+      }
+    },
+    "tocEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entry_id",
+        "level",
+        "heading",
+        "part",
+        "paragraph_index",
+        "style_id",
+        "basis"
+      ],
+      "properties": {
+        "entry_id": {"type": "string", "pattern": "^fm-toc-[0-9a-f]{64}$"},
+        "level": {"type": "integer", "minimum": 1, "maximum": 9},
+        "heading": {"type": "string", "minLength": 1, "maxLength": 16384},
+        "number_label": {"type": ["string", "null"], "maxLength": 32},
+        "part": {"const": "document"},
+        "paragraph_index": {"type": "integer", "minimum": 0},
+        "style_id": {"type": ["string", "null"], "maxLength": 256},
+        "basis": {"type": "string", "minLength": 1, "maxLength": 128}
+      }
+    },
+    "toaEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_id",
+        "category",
+        "word_category",
+        "category_heading",
+        "display_name",
+        "short_name",
+        "normalized_citation",
+        "italic_spans",
+        "locations",
+        "existing_targets"
+      ],
+      "properties": {
+        "authority_id": {"type": "string", "pattern": "^fm-toa-[0-9a-f]{64}$"},
+        "category": {
+          "enum": [
+            "cases",
+            "statutes",
+            "other-authorities",
+            "rules",
+            "treatises",
+            "regulations",
+            "constitutional-provisions"
+          ]
+        },
+        "word_category": {"type": "integer", "minimum": 1, "maximum": 7},
+        "category_heading": {"type": "string", "minLength": 1, "maxLength": 256},
+        "display_name": {"type": "string", "minLength": 1, "maxLength": 16384},
+        "short_name": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "normalized_citation": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "italic_spans": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {"type": "integer", "minimum": 0},
+              {"type": "integer", "minimum": 1}
+            ],
+            "items": false,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "locations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/location"}
+        },
+        "existing_targets": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

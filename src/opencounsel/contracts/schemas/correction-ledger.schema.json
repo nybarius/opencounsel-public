@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencounsel.local/schemas/correction-ledger.schema.json",
+  "title": "OpenCounsel Correction Ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "process_id",
+    "source_revision_id",
+    "transform_id",
+    "transform_version",
+    "input_sha256",
+    "corrected_sha256",
+    "lawyer_review_status",
+    "corrections"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "process_id": {"type": "string", "pattern": "^proc-[0-9a-f]{64}$"},
+    "source_revision_id": {"type": "string", "pattern": "^rev-[0-9a-f]{64}$"},
+    "transform_id": {
+      "enum": [
+        "baseline-copy",
+        "proof-punctuation",
+        "proof-punctuation-citation-audit",
+        "proof-citation-offline-links",
+        "proof-citation-links-front-matter"
+      ]
+    },
+    "transform_version": {"const": "1"},
+    "input_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "record_source_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_resolution_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "proofed_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "hyperlinked_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "corrected_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "lawyer_review_status": {"enum": ["not-required", "pending"]},
+    "corrections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "correction_id",
+          "stage",
+          "part",
+          "paragraph_index",
+          "start_offset",
+          "end_offset",
+          "original_text",
+          "replacement_text",
+          "note",
+          "review_status"
+        ],
+        "properties": {
+          "correction_id": {"type": "string", "pattern": "^corr-[0-9a-f]{64}$"},
+          "stage": {
+            "enum": ["proof", "cite-check", "hyperlink", "toc", "toa", "template"]
+          },
+          "item_type": {
+            "enum": [
+              "correction",
+              "record-citation",
+              "authority-citation",
+              "hyperlink",
+              "toc-heading",
+              "toa-authority",
+              "toc-field",
+              "toa-field"
+            ]
+          },
+          "basis_sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "part": {"type": "string", "minLength": 1, "maxLength": 128},
+          "paragraph_index": {"type": "integer", "minimum": 0},
+          "start_offset": {"type": "integer", "minimum": 0},
+          "end_offset": {"type": "integer", "minimum": 0},
+          "original_text": {"type": "string", "maxLength": 16384},
+          "replacement_text": {"type": "string", "maxLength": 16384},
+          "note": {"type": "string", "minLength": 1, "maxLength": 16384},
+          "application_status": {"enum": ["applied", "review-only"]},
+          "review_status": {"enum": ["pending", "accepted", "rejected"]}
+        }
+      }
+    }
+  }
+}

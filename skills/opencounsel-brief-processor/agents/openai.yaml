@@ -1,0 +1,3 @@
+interface:
+  display_name: "OpenCounsel Brief Processor"
+  short_description: "Clean, format, link, and render legal briefs"

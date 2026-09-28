@@ -1,0 +1,19 @@
+{
+  "schema_version": "1",
+  "domain": "symbolic-ai.procedure-precedent",
+  "task_contract_file": "task_contract_v1.json",
+  "task_contract_id": "sha256:020e563ba678929a817f6f07ea2f4154e3b36b6b69dbb1815c44c5d9783b8f0a",
+  "verifier_policy_file": "verifier_policy_v1.json",
+  "verifier_policy_id": "sha256:460a22c8c58586735a63449d233ba0c4cb5843f5ef47ccd693169116c875903d",
+  "operation_ids": [
+    "procedure-precedent-candidate-admission-v1",
+    "procedure-precedent-revision-release-v1"
+  ],
+  "canonical_centers": [
+    "symbolic_ai.workbench",
+    "symbolic_ai.semantics",
+    "symbolic_ai.procedure",
+    "symbolic_ai.precedent"
+  ],
+  "boundary": "governance consumes domain output identities and cannot mint legal truth or authority"
+}

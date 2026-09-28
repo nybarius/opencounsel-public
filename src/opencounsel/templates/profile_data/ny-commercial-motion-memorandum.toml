@@ -1,0 +1,48 @@
+schema_version = 1
+profile_id = "ny-commercial-motion-memorandum"
+version = "2026.1"
+jurisdiction = "New York"
+court = "Supreme Court, Commercial Division"
+document_type = "motion-memorandum"
+effective_from = 2026-07-15
+last_verified = 2026-07-15
+
+[page]
+paper = "letter"
+min_margin_in = 1.0
+page_numbering = "consecutive"
+
+[typography]
+allowed_font_kinds = ["proportional-serif"]
+body_min_pt = 12
+footnote_min_pt = 12
+body_line_spacing = "double"
+single_spaced_parts = ["headings", "footnotes", "block-quotes"]
+
+[length]
+maximum_words = 7000
+excluded_parts = [
+  "caption",
+  "table-of-contents",
+  "table-of-authorities",
+  "signature-block",
+  "certificate-of-compliance",
+]
+certification_required = true
+
+[structure]
+required_sections = ["argument", "conclusion", "word-count-certification", "signature"]
+distinct_point_headings = true
+heading_numbering = "roman-outline"
+
+[electronic]
+text_searchable_pdf = false
+metadata_removal = false
+bookmarks = "required-for-electronic-memoranda"
+docket_hyperlinks = "required-for-nyscef-citations"
+pdf_page_labels = false
+
+[[sources]]
+title = "Uniform Civil Rules for the Supreme Court and the County Court"
+authority = "22 NYCRR 202.5; Commercial Division Rules 6 and 17"
+url = "https://www.nycourts.gov/rules/part-202-uniform-civil-rules-supreme-court-and-county-court"

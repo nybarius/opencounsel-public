@@ -1,0 +1,49 @@
+schema_version = 1
+profile_id = "fed-sdny-edny-motion-memorandum"
+version = "2026.1"
+jurisdiction = "Federal"
+court = "United States District Courts for the Southern and Eastern Districts of New York"
+document_type = "motion-memorandum"
+effective_from = 2026-01-02
+last_verified = 2026-07-15
+
+[page]
+paper = "letter"
+min_margin_in = 1.0
+page_numbering = "consecutive"
+
+[typography]
+allowed_font_kinds = ["proportional-serif", "monospace"]
+body_min_pt = 12
+footnote_min_pt = 10
+body_line_spacing = "double"
+single_spaced_parts = ["headings", "footnotes", "block-quotes"]
+
+[length]
+maximum_words = 8750
+excluded_parts = [
+  "caption",
+  "index",
+  "table-of-contents",
+  "table-of-authorities",
+  "signature-block",
+  "certificate-of-compliance",
+]
+certification_required = true
+
+[structure]
+required_sections = ["argument", "conclusion", "word-count-certification", "signature"]
+distinct_point_headings = true
+heading_numbering = "roman-outline"
+
+[electronic]
+text_searchable_pdf = false
+metadata_removal = false
+bookmarks = "not-specified"
+docket_hyperlinks = "not-specified"
+pdf_page_labels = false
+
+[[sources]]
+title = "Local Rules of the United States District Courts for the Southern and Eastern Districts of New York"
+authority = "Local Civil Rule 7.1"
+url = "https://nysd.uscourts.gov/sites/default/files/local_rules/2026-01-02%20-%20EDNY%20and%20SDNY%20Joint%20Local%20Rules%20As%20Amended.pdf"

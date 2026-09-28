@@ -1,0 +1,36 @@
+name: Bounded fuzzing
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 5 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fuzz-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  docx-container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          python-version: "3.12"
+      - run: uv sync --locked --all-groups --extra fuzz
+      - run: uv run python fuzz/make_seed.py /tmp/opencounsel-fuzz-corpus
+      - run: >-
+          uv run python fuzz/fuzz_brief_docx.py
+          -max_total_time=45
+          -rss_limit_mb=1024
+          /tmp/opencounsel-fuzz-corpus
+      - run: >-
+          uv run python fuzz/fuzz_proof_docx.py
+          -max_total_time=45
+          -rss_limit_mb=1024
+          /tmp/opencounsel-fuzz-corpus

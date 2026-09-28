@@ -1,0 +1,94 @@
+{
+ "schema": "opencounsel.legal-fixtures/1",
+ "note": "Every retained legal fixture with its public source. No client file or client-derived fixture is in this repository; the demonstration uses a privacy-safe reconstruction of a public docket filing and synthetic support files. Anything not listed here is listed for the operator's review by scripts/privilege_audit.py and never shipped on a guess.",
+ "fixtures": [
+  {
+   "path": "src/opencounsel/demo.py",
+   "public_source": "The New York Times Company v. Microsoft Corporation, No. 1:23-cv-11195 (S.D.N.Y.), Dkt. 52 (Feb. 26, 2024), OpenAI Defendants' motion; public docket via PACER/RECAP (CourtListener). Reconstruction, not the filed document.",
+   "captions": [
+    "The New York Times Company v. Microsoft Corporation"
+   ]
+  },
+  {
+   "path": "src/opencounsel/templates/profile_data/",
+   "public_source": "Public court filing profiles (S.D.N.Y./E.D.N.Y. motion memorandum, N.Y. Court of Appeals principal brief, Second Circuit principal brief, N.Y. Commercial Division memorandum); the captions in them are reported public decisions or synthetic placeholders.",
+   "captions": [
+    "Bell Atlantic Corp. v. Twombly",
+    "Ashcroft v. Iqbal",
+    "Authors Guild v. Google, Inc.",
+    "Sony Corp. of America v. Universal City Studios",
+    "Baker v. Selden",
+    "Paulino v. Braun",
+    "Aretakis v. Sheehan",
+    "Uygur v. Superior Walls",
+    "Polar International Brokerage Corp. v. Richman",
+    "Phillips v. Taco Bell Corp.",
+    "Huseinovic v. Lee Wilson Management, LLC"
+   ]
+  },
+  {
+   "path": "tests/",
+   "public_source": "Synthetic placeholders used in tests and the style review; no real matter.",
+   "captions": [
+    "Smith v. Jones",
+    "Smith v. Jones Holdings, Inc.",
+    "Example v. Case",
+    "Example v. Synthetic",
+    "Synthetic Corp. v. Example Co.",
+    "Unrelated Person v. Entity",
+    "Corp. v. Defendant",
+    "Mata v. Avianca",
+    "Co. v. Bass",
+    "Acme Holdings, LLC v. Example Corp.",
+    "Synthetic Systems, Inc. v. Example Corp."
+   ]
+  }
+ ],
+ "public_captions": [
+  "Gems, Inc. v. Paul",
+  "Bell Atlantic Corp. v. Twombly, 550 U.S. 544 (2007)",
+  "Ashcroft v. Iqbal, 556 U.S. 662 (2009)",
+  "Authors Guild v. Google, Inc., 804 F.3d 202 (2d Cir. 2015)",
+  "Sony Corp. of America v. Universal City Studios, Inc., 464 U.S. 417 (1984)",
+  "Baker v. Selden, 101 U.S. 99 (1879)",
+  "Mata v. Avianca, Inc., No. 22-cv-1461 (PKC) (S.D.N.Y. June 22, 2023)",
+  "Paulino v. Braun",
+  "Aretakis v. Sheehan",
+  "Uygur v. Superior Walls",
+  "Polar International Brokerage Corp. v. Richman",
+  "Phillips v. Taco Bell Corp.",
+  "Huseinovic v. Lee Wilson Management, LLC",
+  "The New York Times Co. v. Microsoft Corp.",
+  "Sony v. Universal",
+  "Park v. Kim, 91 F.4th 610 (2d Cir. 2024)",
+  "Gems, Inc. v. Paul (operator-confirmed public on 2026-09-27; citation to be added)"
+ ],
+ "discussion_paths": [
+  "README.md",
+  "SECURITY.md",
+  "docs/PAIN_POINTS.md",
+  "docs/PUBLISH_READINESS.md",
+  "docs/BRIEF.md",
+  "docs/GAP_REPORT.md",
+  "docs/LEGAL_FIXTURES.json",
+  "src/opencounsel/cli.py"
+ ],
+ "synthetic_fixture_paths": [
+  "tests/test_repository_privacy.py"
+ ],
+ "schema_id_hosts": [
+  "opencounsel.local"
+ ],
+ "review_captions": [],
+ "operator_confirmed": {
+  "2026-09-27": [
+   "Gems, Inc. v. Paul: public caption",
+   "tests/test_repository_privacy.py history blob: synthetic sk-proj key and SSN are test fakes; never ships, the public history is spore-regrown"
+  ]
+ },
+ "scanner_self_tests": [
+  "tests/test_privilege_audit.py",
+  "tests/test_public_candidate.py"
+ ],
+ "fixture_revision_note": "The citation-year regression uses manifested synthetic captions; the two year assertions and citation/reporting syntax are unchanged. Candidate refusal tests contain generated marker strings only."
+}

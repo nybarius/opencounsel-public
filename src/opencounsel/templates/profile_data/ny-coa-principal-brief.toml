@@ -1,0 +1,65 @@
+schema_version = 1
+profile_id = "ny-coa-principal-brief"
+version = "2026.1"
+jurisdiction = "New York"
+court = "Court of Appeals"
+document_type = "principal-brief"
+effective_from = 2026-07-15
+last_verified = 2026-07-15
+
+[page]
+paper = "letter"
+min_margin_in = 1.0
+page_numbering = "consecutive-bottom-center"
+
+[typography]
+allowed_font_kinds = ["proportional-serif", "monospace"]
+body_min_pt = 14
+footnote_min_pt = 12
+body_line_spacing = "double"
+single_spaced_parts = ["headings", "footnotes", "block-quotes"]
+
+[length]
+maximum_words = 14000
+excluded_parts = [
+  "cover",
+  "disclosure-statement",
+  "table-of-contents",
+  "table-of-authorities",
+  "signature-block",
+  "proof-of-service",
+  "certificate-of-compliance",
+  "authorized-addendum",
+]
+certification_required = true
+
+[structure]
+required_sections = [
+  "table-of-contents",
+  "table-of-authorities",
+  "questions-presented",
+  "statement-of-jurisdiction",
+  "statement-of-case-and-facts",
+  "argument",
+  "conclusion",
+  "certificate-of-compliance",
+]
+distinct_point_headings = true
+heading_numbering = "point-roman"
+
+[electronic]
+text_searchable_pdf = true
+metadata_removal = true
+bookmarks = "not-specified"
+docket_hyperlinks = "not-specified"
+pdf_page_labels = false
+
+[[sources]]
+title = "Rules of Practice of the New York Court of Appeals"
+authority = "22 NYCRR 500.1 and 500.13"
+url = "https://www.nycourts.gov/ctapps/500rules.htm"
+
+[[sources]]
+title = "Court of Appeals Technical Specifications and Instructions"
+authority = "Digital Submission Technical Specifications"
+url = "https://www.nycourts.gov/ctapps/techspecs.htm"

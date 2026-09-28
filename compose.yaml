@@ -1,0 +1,35 @@
+name: opencounsel
+
+services:
+  opencounsel:
+    build:
+      context: .
+    image: opencounsel:local
+    init: true
+    ports:
+      - "127.0.0.1:8765:8765"
+    volumes:
+      - opencounsel-data:/home/opencounsel/data
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=1g,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - >-
+          import urllib.request;
+          urllib.request.urlopen('http://127.0.0.1:8765/healthz', timeout=2)
+      interval: 10s
+      timeout: 3s
+      start_period: 15s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  opencounsel-data:

@@ -1,0 +1,30 @@
+{
+  "schema_version": "1",
+  "contract_name": "symbolic-ai-procedural-authority-compiler",
+  "candidate_states": [
+    "CANDIDATE",
+    "VERIFIED",
+    "ADMITTED"
+  ],
+  "required_bindings": [
+    "task_contract_id",
+    "domain_key_id",
+    "verifier_policy_id",
+    "predecessor_ids",
+    "source_snapshot_ids",
+    "context_snapshot_id",
+    "domain_output_ids"
+  ],
+  "operations": [
+    {
+      "operation_id": "procedure-precedent-candidate-admission-v1",
+      "effect": "verify and admit a candidate referencing canonical procedure and precedent outputs"
+    },
+    {
+      "operation_id": "procedure-precedent-revision-release-v1",
+      "effect": "audit a bounded revision and determine release eligibility"
+    }
+  ],
+  "external_effect": "not supported by this packet",
+  "domain_admission": "only an authorized domain gate may admit a verified candidate"
+}

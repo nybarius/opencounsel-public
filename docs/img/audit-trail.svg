@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" role="img" aria-labelledby="t d">
+<title id="t">The audit trail: every step of a filing leaves a record</title>
+<desc id="d">Left: the records in the review package from the public Dkt. 52 demonstration run of 2026-09-27, from the immutable original through the correction ledger, front matter, source verification and links to the hashed published files. Right: the fields of one correction-ledger entry and the plain-English explanation attached to it.</desc>
+<style>
+svg{color:#0F1D33}
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+.mut{fill:#56647A}.card{fill:#F6F8FB;stroke:#D5DCE6}.acc{fill:#B07D1F}.accS{stroke:#B07D1F}
+.rule{stroke:#D5DCE6}.dot{fill:#FFFFFF;stroke:#B07D1F}.tag{fill:#F4EAD6}.why{fill:#FBF6EC;stroke:#E4CFA3}
+@media (prefers-color-scheme:dark){svg{color:#E6ECF4}.mut{fill:#9CA9BB}.card{fill:#141D2A;stroke:#2A374A}.acc{fill:#E0B25A}.accS{stroke:#E0B25A}.rule{stroke:#2A374A}.dot{fill:#0D1117;stroke:#E0B25A}.tag{fill:#3A2F17}.why{fill:#1F1A10;stroke:#5C4A22}}
+</style>
+<text x="24" y="36" font-size="20" font-weight="700" fill="currentColor">Every step leaves a record</text>
+<text x="24" y="60" font-size="13" class="mut">The review package from the public Dkt. 52 demonstration run of 2026-09-27</text>
+
+<path d="M44 104V404" stroke-width="2" class="accS" stroke-opacity="0.45"/>
+<g stroke-width="2.2" class="dot">
+<circle cx="44" cy="104" r="7"/><circle cx="44" cy="164" r="7"/><circle cx="44" cy="224" r="7"/><circle cx="44" cy="284" r="7"/><circle cx="44" cy="344" r="7"/><circle cx="44" cy="404" r="7"/>
+</g>
+<g font-size="14" font-weight="700" fill="currentColor">
+<text x="68" y="100">Original brief</text>
+<text x="68" y="160">Correction ledger</text>
+<text x="68" y="220">Front matter</text>
+<text x="68" y="280">Source verification</text>
+<text x="68" y="340">Links</text>
+<text x="68" y="400">Published filing</text>
+</g>
+<rect x="194" y="86" width="82" height="19" rx="9.5" class="tag"/><text x="235" y="99.5" text-anchor="middle" font-size="10.5" font-weight="700" letter-spacing="1" class="acc">IMMUTABLE</text>
+<g font-size="12.5" class="mut">
+<text x="68" y="120">Preserved byte for byte; every later artifact is hash-bound to it</text>
+<text x="68" y="180">31 formatting corrections applied; 5 items left for lawyer review</text>
+<text x="68" y="240">10 linked TOC entries; 5 authorities in a categorized TOA</text>
+<text x="68" y="300">4 opinions requested by exact authority; identity and quotations checked</text>
+<text x="68" y="360">1 durable link inserted, and only after explicit approval</text>
+</g>
+<text x="68" y="420" font-size="12" class="mut mono">DOCX aa94f452…7f44683   PDF 857078bd…cd202c</text>
+
+<rect x="566" y="84" width="370" height="344" rx="12" class="card"/>
+<text x="588" y="114" font-size="11" font-weight="700" letter-spacing="1.5" class="acc">ONE LEDGER ENTRY</text>
+<g font-size="12.5">
+<text x="588" y="146" class="mono" fill="currentColor">correction_id</text><text x="712" y="146" class="mut">corr-&lt;sha256&gt;</text>
+<path d="M588 158h326" class="rule"/>
+<text x="588" y="178" class="mono" fill="currentColor">stage</text><text x="712" y="178" class="mut">proof, cite-check, toc, toa…</text>
+<path d="M588 190h326" class="rule"/>
+<text x="588" y="210" class="mono" fill="currentColor">location</text><text x="712" y="210" class="mut">part, paragraph, offsets</text>
+<path d="M588 222h326" class="rule"/>
+<text x="588" y="242" class="mono" fill="currentColor">before → after</text><text x="712" y="242" class="mut">original and replacement</text>
+<path d="M588 254h326" class="rule"/>
+<text x="588" y="274" class="mono" fill="currentColor">note</text><text x="712" y="274" class="mut">why the change was made</text>
+<path d="M588 286h326" class="rule"/>
+<text x="588" y="306" class="mono" fill="currentColor">review</text><text x="712" y="306" class="mut">pending → accepted / rejected</text>
+</g>
+<rect x="584" y="326" width="334" height="84" rx="10" class="why"/>
+<text x="602" y="352" font-size="13" font-weight="700" class="acc">Why did it decide that</text>
+<text x="602" y="374" font-size="12.5" fill="currentColor">One plain-English sentence from the</text>
+<text x="602" y="393" font-size="12.5" fill="currentColor">entry's class, identical every time.</text>
+</svg>

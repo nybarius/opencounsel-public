@@ -1,0 +1,24 @@
+{
+  "schema_version": "1",
+  "policy_name": "procedural-authority-domain-output-verifier",
+  "required_predicates": [
+    "exact_interface_identity",
+    "exact_predecessor_ancestry",
+    "exact_source_snapshot",
+    "exact_context_snapshot",
+    "exact_domain_output_ancestry",
+    "locked_region_identity",
+    "write_set_confinement",
+    "requested_delta_realization",
+    "coverage_closure",
+    "regression_closure",
+    "authorized_human_review"
+  ],
+  "negative_laws": [
+    "verification does not establish legal truth",
+    "publication does not confer domain admission",
+    "worker success does not mint authority",
+    "reader context does not supply missing legal predicates"
+  ],
+  "receipt_issuer": "symbolic-ai-domain-gate-instance"
+}

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="t d">
+<title id="t">The drain curve: share of AI calls turned into rules over time, our own workload</title>
+<desc id="d">Bar chart of the share of strong-model calls served by rules per day on our own workload: 2026-09-24, 2 of 144 (1.4%); 2026-09-25, 0 of 189 (0.0%); 2026-09-26, 1 of 275 (0.4%); 2026-09-27, 4 of 111 (3.6%).</desc>
+<style>
+svg{color:#0F1D33}
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.mut{fill:#56647A}.card{fill:#F6F8FB;stroke:#D5DCE6}.hi{fill:#FFFFFF;stroke:#B07D1F}.acc{fill:#B07D1F}.accS{stroke:#B07D1F}
+.rule{stroke:#D5DCE6}.inv{fill:#FFFFFF}.bar{fill:#B07D1F}.core{fill:#0F1D33}.coreT{fill:#FFFFFF}.coreM{fill:#B9C5D6}
+@media (prefers-color-scheme:dark){svg{color:#E6ECF4}.mut{fill:#9CA9BB}.card{fill:#141D2A;stroke:#2A374A}.hi{fill:#161F2C;stroke:#E0B25A}.acc{fill:#E0B25A}.accS{stroke:#E0B25A}.rule{stroke:#2A374A}.inv{fill:#0F1D33}.bar{fill:#E0B25A}.core{fill:#E6ECF4}.coreT{fill:#0F1D33}.coreM{fill:#3D4A5E}}
+</style>
+<text x="24" y="36" font-size="20" font-weight="700" fill="currentColor">The drain: model calls turned into served rules</text>
+<text x="24" y="60" font-size="13" class="mut">Share per day, measured on our own workload, 2026-09-24 to 2026-09-27</text>
+<path d="M96 252.0H936" class="rule"/><text x="84" y="256.0" text-anchor="end" font-size="12" class="mut">0%</text>
+<path d="M96 212.0H936" class="rule"/><text x="84" y="216.0" text-anchor="end" font-size="12" class="mut">1%</text>
+<path d="M96 172.0H936" class="rule"/><text x="84" y="176.0" text-anchor="end" font-size="12" class="mut">2%</text>
+<path d="M96 132.0H936" class="rule"/><text x="84" y="136.0" text-anchor="end" font-size="12" class="mut">3%</text>
+<path d="M96 92.0H936" class="rule"/><text x="84" y="96.0" text-anchor="end" font-size="12" class="mut">4%</text>
+<rect x="157" y="196.4" width="88" height="55.6" rx="4" class="bar"/>
+<text x="201" y="186.4" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">1.4%</text>
+<text x="201" y="274" text-anchor="middle" font-size="12.5" fill="currentColor">2026-09-24</text>
+<text x="201" y="292" text-anchor="middle" font-size="12" class="mut">2 of 144 calls</text>
+<rect x="367" y="252.0" width="88" height="0.0" rx="4" class="bar"/>
+<rect x="367" y="250" width="88" height="2" class="bar"/>
+<text x="411" y="242.0" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">0.0%</text>
+<text x="411" y="274" text-anchor="middle" font-size="12.5" fill="currentColor">2026-09-25</text>
+<text x="411" y="292" text-anchor="middle" font-size="12" class="mut">0 of 189 calls</text>
+<rect x="577" y="237.5" width="88" height="14.5" rx="4" class="bar"/>
+<text x="621" y="227.5" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">0.4%</text>
+<text x="621" y="274" text-anchor="middle" font-size="12.5" fill="currentColor">2026-09-26</text>
+<text x="621" y="292" text-anchor="middle" font-size="12" class="mut">1 of 275 calls</text>
+<rect x="787" y="107.9" width="88" height="144.1" rx="4" class="bar"/>
+<text x="831" y="97.9" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">3.6%</text>
+<text x="831" y="274" text-anchor="middle" font-size="12.5" fill="currentColor">2026-09-27</text>
+<text x="831" y="292" text-anchor="middle" font-size="12" class="mut">4 of 111 calls</text>
+<text x="24" y="326" font-size="12" class="mut">Source: institutional_stack drain receipts (729 rows; harvest coverage 687 of 697 classes). Early days: the record carried</text>
+<text x="24" y="344" font-size="12" class="mut">no read digests, so almost nothing could be served; the curve rises as reads are recorded.</text>
+</svg>

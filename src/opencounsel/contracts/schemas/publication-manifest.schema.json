@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencounsel.local/schemas/publication-manifest.schema.json",
+  "title": "OpenCounsel FOSS Publication Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "process_id",
+    "engine",
+    "engine_version",
+    "input_docx_sha256",
+    "output_docx_sha256",
+    "output_pdf_sha256",
+    "page_count",
+    "toc_entry_count",
+    "toa_authority_count",
+    "toa_occurrence_count",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "process_id": {"type": "string", "pattern": "^proc-[0-9a-f]{64}$"},
+    "engine": {"const": "libreoffice"},
+    "engine_version": {"type": "string", "minLength": 1, "maxLength": 256},
+    "input_docx_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "output_docx_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "output_pdf_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "page_count": {"type": "integer", "minimum": 1},
+    "toc_entry_count": {"type": "integer", "minimum": 0},
+    "toa_authority_count": {"type": "integer", "minimum": 0},
+    "toa_occurrence_count": {"type": "integer", "minimum": 0},
+    "created_at": {"type": "string", "format": "date-time"}
+  }
+}

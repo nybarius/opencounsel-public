@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img" aria-labelledby="t d">
+<title id="t">OpenCounsel: damaged brief in, source-verified filing-ready package out</title>
+<desc id="d">A banner. Left: the OpenCounsel name, the promise, three trust properties and the OpenAI Build Week finalist credential. Right: a damaged brief page turning into a clean filing with a verification seal and a correction ledger.</desc>
+<style>
+svg{color:#F3F6FA}
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.acc{fill:#E0B25A}.accS{stroke:#E0B25A}
+.sub{fill:#B9C5D6}.chipT{fill:#DCE4EF}
+.chip{fill:#13284A;stroke:#2C4670}
+.page{fill:#FBFCFE}.pageLine{stroke:#9AA7BA}.pageInk{stroke:#1D3150}
+.bad{fill:#E9EDF3}.badLine{stroke:#A7B1C0}
+</style>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#0A1830"/><stop offset="1" stop-color="#132C52"/>
+</linearGradient>
+<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+<path d="M24 0H0V24" fill="none" stroke="#FFFFFF" stroke-opacity="0.035"/>
+</pattern>
+<marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#E0B25A"/></marker>
+</defs>
+<rect width="960" height="320" rx="18" fill="url(#bg)"/>
+<rect width="960" height="320" rx="18" fill="url(#grid)"/>
+<rect x="48" y="44" width="36" height="3" rx="1.5" class="acc"/>
+<text x="48" y="72" font-size="13" font-weight="700" letter-spacing="3" class="acc">OPENCOUNSEL</text>
+<text x="48" y="118" font-size="36" font-weight="700" fill="currentColor">Damaged brief in.</text>
+<text x="48" y="160" font-size="36" font-weight="700" fill="currentColor">Filing-ready package out.</text>
+<text x="48" y="192" font-size="15" class="sub">Source-verified, produced on your machine, with a correction</text>
+<text x="48" y="212" font-size="15" class="sub">ledger for lawyer review. The original is never overwritten.</text>
+<g font-size="12" class="chipT">
+<rect x="48" y="232" width="104" height="26" rx="13" class="chip"/><text x="100" y="249.5" text-anchor="middle" class="chipT">Runs locally</text>
+<rect x="160" y="232" width="228" height="26" rx="13" class="chip"/><text x="274" y="249.5" text-anchor="middle" class="chipT">No client prose to a hosted model</text>
+<rect x="396" y="232" width="134" height="26" rx="13" class="chip"/><text x="463" y="249.5" text-anchor="middle" class="chipT">Auditable ledger</text>
+</g>
+<circle cx="58" cy="286" r="9" fill="none" stroke-width="1.6" class="accS"/>
+<path d="M53.5 286.2l3 3 5.5-6" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="accS"/>
+<text x="75" y="290.5" font-size="13" font-weight="600" class="acc">Finalist · OpenAI Build Week 2026 · Work &amp; Productivity</text>
+<g transform="translate(598 70) rotate(-7 60 80)">
+<rect width="128" height="168" rx="6" class="bad"/>
+<g stroke-width="3" stroke-linecap="round" class="badLine">
+<path d="M18 26h60"/><path d="M30 42h78"/><path d="M14 58h52"/><path d="M24 74h86"/><path d="M18 90h40"/><path d="M36 106h70"/><path d="M14 122h92"/><path d="M28 138h44"/>
+</g>
+<path d="M92 20l14 14M106 20l-14 14" stroke="#C98B8B" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<path d="M738 150h40" stroke-width="2" class="accS" marker-end="url(#arw)"/>
+<rect x="810" y="84" width="118" height="164" rx="6" fill="#20375C"/>
+<rect x="802" y="76" width="118" height="164" rx="6" class="page"/>
+<g stroke-width="2.4" stroke-linecap="round">
+<path d="M822 98h78" class="pageInk"/>
+<path d="M822 114h52" class="pageLine"/><path d="M822 126h66" class="pageLine"/><path d="M822 138h58" class="pageLine"/>
+<path d="M822 158h78" class="pageInk"/>
+<path d="M822 174h78" class="pageLine"/><path d="M822 186h78" class="pageLine"/><path d="M822 198h60" class="pageLine"/>
+</g>
+<g stroke="#1D3150" stroke-width="1.2" stroke-dasharray="1.5 3"><path d="M876 114h24M890 126h10M882 138h18"/></g>
+<circle cx="912" cy="232" r="22" fill="#E0B25A"/>
+<circle cx="912" cy="232" r="17" fill="none" stroke="#0A1830" stroke-width="1.2" stroke-opacity="0.5"/>
+<path d="M903.5 232.5l6 6 11-12" fill="none" stroke="#0A1830" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

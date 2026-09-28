@@ -1,0 +1,72 @@
+schema_version = 1
+profile_id = "fed-ca2-principal-brief"
+version = "2026.1"
+jurisdiction = "Federal"
+court = "United States Court of Appeals for the Second Circuit"
+document_type = "principal-brief"
+effective_from = 2026-07-15
+last_verified = 2026-07-15
+
+[page]
+paper = "letter"
+min_margin_in = 1.0
+page_numbering = "consecutive"
+
+[typography]
+allowed_font_kinds = ["proportional-serif", "monospace"]
+body_min_pt = 14
+footnote_min_pt = 14
+body_line_spacing = "double"
+single_spaced_parts = ["headings", "footnotes", "block-quotes"]
+
+[length]
+maximum_words = 13000
+excluded_parts = [
+  "cover",
+  "disclosure-statement",
+  "table-of-contents",
+  "table-of-authorities",
+  "oral-argument-statement",
+  "authorized-addendum",
+  "certificates-of-counsel",
+  "signature-block",
+  "proof-of-service",
+]
+certification_required = true
+
+[structure]
+required_sections = [
+  "table-of-contents",
+  "table-of-authorities",
+  "jurisdictional-statement",
+  "issues-presented",
+  "statement-of-case",
+  "summary-of-argument",
+  "argument",
+  "conclusion",
+  "certificate-of-compliance",
+]
+distinct_point_headings = true
+heading_numbering = "roman-outline"
+
+[electronic]
+text_searchable_pdf = false
+metadata_removal = false
+bookmarks = "not-specified"
+docket_hyperlinks = "not-specified"
+pdf_page_labels = true
+
+[[sources]]
+title = "Federal Rule of Appellate Procedure 28"
+authority = "FRAP 28"
+url = "https://www.ca2.uscourts.gov/clerk/case_filing/rules/title7/rule_28.html"
+
+[[sources]]
+title = "Federal Rule of Appellate Procedure 32"
+authority = "FRAP 32"
+url = "https://www.ca2.uscourts.gov/clerk/case_filing/rules/title7/rule_32.html"
+
+[[sources]]
+title = "Second Circuit Local Rule 32.1"
+authority = "2d Cir. L.R. 32.1"
+url = "https://www.ca2.uscourts.gov/clerk/case_filing/rules/title7/local_rule_32_1.html"

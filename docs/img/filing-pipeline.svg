@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" role="img" aria-labelledby="t d">
+<title id="t">The filing pipeline: a damaged brief becomes a verified, filing-ready package with its ledger</title>
+<desc id="d">Four columns. Before: a damaged Word brief. Pass 1, production: court profile, typography and headings, linked tables of contents and authorities, pagination. Pass 2, verification: fail-closed source intake, source identity, exact quotations, approved links. After: the filing-ready package with editable DOCX and PDF, correction ledger, source-verification report, link and publication records and a hash manifest. Footer: runs locally, no client prose to a hosted model, originals immutable, characterization stays with counsel.</desc>
+<style>
+svg{color:#0F1D33}
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.mut{fill:#56647A}.card{fill:#F6F8FB;stroke:#D5DCE6}.hi{fill:#FFFFFF;stroke:#B07D1F}
+.acc{fill:#B07D1F}.accS{stroke:#B07D1F}.rule{stroke:#C3CCD8}.soft{fill:#E9EEF5}.ln{stroke:#8C99AD}
+.badS{stroke:#A9B3C2}.inv{fill:#FFFFFF}.chk{fill:none;stroke:#FFFFFF}
+@media (prefers-color-scheme:dark){svg{color:#E6ECF4}.mut{fill:#9CA9BB}.card{fill:#141D2A;stroke:#2A374A}.hi{fill:#161F2C;stroke:#E0B25A}.acc{fill:#E0B25A}.accS{stroke:#E0B25A}.rule{stroke:#35445A}.soft{fill:#1C2737}.ln{stroke:#6F7E94}.badS{stroke:#556377}.inv{fill:#0F1D33}.chk{stroke:#0F1D33}}
+</style>
+<defs>
+<marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="acc"/></marker>
+<symbol id="ok" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7.5" class="acc"/><path d="M4.6 8.3l2.3 2.3 4.4-4.8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="chk"/></symbol>
+</defs>
+<text x="24" y="36" font-size="20" font-weight="700" fill="currentColor">From damaged brief to filing-ready package</text>
+<text x="24" y="60" font-size="13" class="mut">Two deterministic passes on your own machine. Every change lands in a ledger a lawyer can review.</text>
+
+<rect x="24" y="84" width="196" height="238" rx="12" class="card"/>
+<text x="44" y="112" font-size="11" font-weight="700" letter-spacing="1.5" class="mut">BEFORE</text>
+<g transform="translate(88 126) rotate(-5 34 46)">
+<rect width="68" height="90" rx="4" class="soft"/>
+<g stroke-width="2.4" stroke-linecap="round" class="badS"><path d="M10 16h34M18 28h40M8 40h28M14 52h44M10 64h22M20 76h36"/></g>
+</g>
+<text x="122" y="248" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor">Damaged brief</text>
+<text x="122" y="270" text-anchor="middle" font-size="12" class="mut">Malformed Word file</text>
+<text x="122" y="287" text-anchor="middle" font-size="12" class="mut">broken hierarchy, empty</text>
+<text x="122" y="304" text-anchor="middle" font-size="12" class="mut">TOC/TOA, bad pagination</text>
+
+<path d="M224 203h26" stroke-width="2" class="accS" marker-end="url(#arw)"/>
+
+<rect x="256" y="84" width="208" height="238" rx="12" class="card"/>
+<circle cx="286" cy="113" r="13" class="acc"/><text x="286" y="118" text-anchor="middle" font-size="14" font-weight="700" class="inv">1</text>
+<text x="308" y="118" font-size="15" font-weight="700" fill="currentColor">Production</text>
+<path d="M276 138h168" class="rule"/>
+<g font-size="13" fill="currentColor">
+<text x="278" y="166">Court filing profile</text>
+<text x="278" y="194">Typography and headings</text>
+<text x="278" y="222">Linked TOC and TOA</text>
+<text x="278" y="250">Roman front matter,</text>
+<text x="278" y="268">Arabic body page 1</text>
+<text x="278" y="296">Editable DOCX + PDF</text>
+</g>
+
+<path d="M468 203h26" stroke-width="2" class="accS" marker-end="url(#arw)"/>
+
+<rect x="500" y="84" width="208" height="238" rx="12" class="card"/>
+<circle cx="530" cy="113" r="13" class="acc"/><text x="530" y="118" text-anchor="middle" font-size="14" font-weight="700" class="inv">2</text>
+<text x="552" y="118" font-size="15" font-weight="700" fill="currentColor">Verification</text>
+<path d="M520 138h168" class="rule"/>
+<g font-size="13" fill="currentColor">
+<text x="522" y="166">Uploaded opinions bound</text>
+<text x="522" y="184">to declared authorities</text>
+<text x="522" y="212">Source identity checked</text>
+<text x="522" y="240">Exact quotations checked</text>
+<text x="522" y="268">Links inserted only on</text>
+<text x="522" y="286">explicit approval</text>
+</g>
+
+<path d="M712 203h26" stroke-width="2" class="accS" marker-end="url(#arw)"/>
+
+<rect x="744" y="84" width="192" height="238" rx="12" class="hi" stroke-width="1.6"/>
+<text x="764" y="112" font-size="11" font-weight="700" letter-spacing="1.5" class="acc">AFTER</text>
+<text x="764" y="136" font-size="14" font-weight="700" fill="currentColor">Filing-ready package</text>
+<g font-size="13" fill="currentColor">
+<use href="#ok" x="764" y="155" width="15" height="15"/><text x="788" y="167">DOCX + PDF filing</text>
+<use href="#ok" x="764" y="183" width="15" height="15"/><text x="788" y="195">Correction ledger</text>
+<use href="#ok" x="764" y="211" width="15" height="15"/><text x="788" y="223">Source verification</text>
+<use href="#ok" x="764" y="239" width="15" height="15"/><text x="788" y="251">Link and publication</text>
+<text x="788" y="268">records</text>
+<use href="#ok" x="764" y="284" width="15" height="15"/><text x="788" y="296">Hash manifest</text>
+</g>
+
+<rect x="24" y="344" width="912" height="40" rx="10" class="soft"/>
+<g transform="translate(44 356)" fill="none" stroke-width="1.7" class="accS"><rect x="0" y="7" width="14" height="10" rx="2"/><path d="M3 7V4.5a4 4 0 0 1 8 0V7"/></g>
+<text x="70" y="369" font-size="13" fill="currentColor">Runs locally  ·  no client prose to a hosted model  ·  originals never overwritten  ·  characterization stays with counsel</text>
+</svg>

@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: opencounsel_test
+          POSTGRES_USER: opencounsel
+          POSTGRES_PASSWORD: opencounsel_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U opencounsel -d opencounsel_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      OPENCOUNSEL_TEST_DATABASE_URL: postgresql+psycopg://opencounsel:opencounsel_test@localhost:5432/opencounsel_test
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          python-version: "3.12"
+          version: "0.11.29"
+      - run: uv sync --locked --all-groups
+      - run: uv lock --check
+      - run: uv run ruff check .
+      - run: uv run mypy src
+      - name: Install FOSS publication engine
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends libreoffice-writer
+      - run: >-
+          uv run pytest
+          --cov=opencounsel
+          --cov-report=term-missing
+          --junitxml=pytest-results.xml
+      - name: Upload pytest report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-results-${{ github.sha }}
+          path: pytest-results.xml
+          retention-days: 14
+          if-no-files-found: warn
+      - run: uv build
+      - name: Build synthetic Word style review packet
+        run: uv run python scripts/build_style_review.py --out word-style-review
+      - name: Upload Word style review packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: word-style-review-${{ github.sha }}
+          path: word-style-review
+          retention-days: 14
+          if-no-files-found: error
+
+  windows-contracts:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          python-version: "3.12"
+          version: "0.11.29"
+      - run: uv sync --locked --all-groups
+      - run: >-
+          uv run pytest
+          tests/test_contracts.py
+          tests/test_revisions.py
+          tests/test_mcp_server.py
+
+  container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rehearse clean-state two-pass Compose demo
+        run: |
+          bash -o pipefail -c 'sh scripts/rehearse_compose_demo.sh \
+            "$RUNNER_TEMP/compose-rehearsal-report.json" 2>&1 | \
+            tee "$RUNNER_TEMP/compose-rehearsal.log"'
+      - name: Upload Compose rehearsal evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compose-rehearsal-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/compose-rehearsal-report.json
+            ${{ runner.temp }}/compose-rehearsal.log
+            src/opencounsel/briefs/normalize_docx.py
+          retention-days: 14
+          if-no-files-found: warn

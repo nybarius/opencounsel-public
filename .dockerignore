@@ -1,0 +1,15 @@
+.git
+.github
+.hypothesis
+.mypy_cache
+.pytest_cache
+.ruff_cache
+.venv
+dist
+deliverables
+**/__pycache__
+*.docx
+*.pdf
+*.zip
+*.pyc
+.coverage

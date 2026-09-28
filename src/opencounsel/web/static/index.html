@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Local filing preflight for appellate briefs and memoranda">
+    <title>OpenCounsel — Filing preflight</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/recording.css">
+    <script src="/assets/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="OpenCounsel home">
+        <span class="brand-mark" aria-hidden="true">OC</span>
+        <span><strong>OpenCounsel</strong><small>Filing preflight</small></span>
+      </a>
+      <div class="local-status"><span class="status-dot" aria-hidden="true"></span>Local workspace</div>
+    </header>
+
+    <main id="main" class="shell">
+      <section id="intake-view" class="view" aria-labelledby="intake-title">
+        <div class="recording-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Two-pass legal production, running locally</p>
+            <h1 id="intake-title">Prepare an appellate brief</h1>
+            <p class="lede hero-promise"><strong>Turn a broken brief into a filing-ready package</strong></p>
+            <p class="lede">
+              Runs locally. OpenCounsel repairs the Word production, compiles linked front matter,
+              identifies the source copies it needs, verifies uploaded opinions, and returns an
+              auditable final package.
+            </p>
+            <p class="demo-case-line">
+              <strong>Public demonstration</strong>
+              The New York Times Company v. Microsoft Corporation — OpenAI Defendants’ Dkt. 52 motion
+            </p>
+            <div class="demo-cta-row">
+              <button id="demo-button" class="button primary demo-cta" type="button">
+                Run the OpenAI filing demo
+              </button>
+              <span class="demo-cta-note">Real public authorities · synthetic local source copies · no client data</span>
+            </div>
+          </div>
+
+          <aside class="transformation-card" aria-label="Before and after filing transformation">
+            <div class="transformation-header">
+              <span>One visible transformation</span>
+              <strong>Malformed source → reviewable filing</strong>
+            </div>
+            <div class="transformation-grid">
+              <section class="transformation-state bad-document">
+                <h2>Malformed DOCX</h2>
+                <p>TABLE OF CONTENTS [TOC]</p>
+                <p>IV. ARGUMENT</p>
+                <p>Mixed fonts, broken hierarchy, no operative front matter.</p>
+                <div class="document-line"></div><div class="document-line short"></div>
+                <div class="document-line medium"></div><div class="document-line"></div>
+              </section>
+              <section class="transformation-state good-document">
+                <h2>Filing-ready package</h2>
+                <p><strong>Linked TOC and TOA</strong></p>
+                <p>Four public opinions verified locally.</p>
+                <p>Hash-bound final ZIP with DOCX, PDF, manifests, and audit reports.</p>
+                <div class="document-line"></div><div class="document-line medium"></div>
+                <div class="document-line short"></div><div class="document-line"></div>
+              </section>
+            </div>
+          </aside>
+        </div>
+
+        <section id="onboarding" aria-labelledby="onboarding-title">
+          <h2 id="onboarding-title">Three steps to your first review</h2>
+          <ol class="demo-stage-rail" aria-label="Getting started">
+            <li><span>01</span><strong>Run the OpenAI filing demo</strong><small>Use the button above to prepare a public example. No client files are needed.</small></li>
+            <li><span>02</span><strong>Review items</strong><small>Compare the original and prepared filing, then review the findings and requested source copies.</small></li>
+            <li><span>03</span><strong>Why did it decide that</strong><small>Open the review tab to read each explanation, its witness and its matching ledger receipt.</small></li>
+          </ol>
+        </section>
+
+        <ol class="demo-stage-rail" aria-label="Demo workflow">
+          <li><span>01</span><strong>Prepare</strong><small>Normalize the brief and compile linked front matter.</small></li>
+          <li><span>02</span><strong>Review sources</strong><small>See the exact public opinions requested.</small></li>
+          <li><span>03</span><strong>Approve links</strong><small>Accept only durable, verified document URLs.</small></li>
+          <li><span>04</span><strong>Download package</strong><small>Receive separate final DOCX, PDF, and audit ZIP.</small></li>
+        </ol>
+
+        <div class="manual-intake-label">
+          <div><p class="eyebrow">Manual path</p><h2>Prepare another filing</h2></div>
+          <p>Use your own DOCX and optional record package. Files remain local.</p>
+        </div>
+
+        <form id="intake-form" class="intake-card">
+          <div class="section-heading">
+            <div><span class="step-number">01</span><h2>Add the filing materials</h2></div>
+            <p>Start with the Word draft; add a record only when the filing cites one.</p>
+          </div>
+
+          <fieldset class="field-group">
+            <legend>Record package</legend>
+            <label class="check-row">
+              <input id="record-mode" name="record_mode" type="radio" value="record" checked>
+              <span><strong>Uses a record</strong><br>Add a searchable PDF or mapped ROA package.</span>
+            </label>
+            <label class="check-row">
+              <input id="no-record-mode" name="record_mode" type="radio" value="no-record">
+              <span><strong>No material record citations</strong><br>Prepare the filing without an ROA.</span>
+            </label>
+          </fieldset>
+
+          <div class="upload-grid">
+            <label class="dropzone" id="brief-dropzone">
+              <input id="brief-input" name="brief" type="file" accept=".docx" required>
+              <span class="file-type">DOCX</span><strong>Word draft</strong>
+              <span class="drop-prompt">Drop the Word draft here or choose a file</span>
+              <span class="file-name" id="brief-name">No file selected</span>
+            </label>
+            <label class="dropzone" id="roa-dropzone">
+              <input id="roa-input" name="roa" type="file" accept=".pdf,.zip" required>
+              <span class="file-type">PDF / ZIP</span><strong>Record package</strong>
+              <span class="drop-prompt">Add a searchable PDF or mapped ROA package</span>
+              <span class="file-name" id="roa-name">No file selected</span>
+            </label>
+          </div>
+
+          <div id="pdf-options" class="pdf-options" hidden>
+            <div class="field-group compact-field">
+              <label for="first-record-page">First record page in the PDF</label>
+              <input id="first-record-page" name="first_record_page" type="number" min="1" value="1">
+            </div>
+            <label class="check-row">
+              <input id="numbering-verified" name="numbering_verified" type="checkbox">
+              <span>I confirmed that the PDF pages are searchable and follow consecutive record-page numbering from this page.</span>
+            </label>
+          </div>
+
+          <div class="rules-row">
+            <div class="field-group profile-field">
+              <label for="profile">Court and filing profile</label>
+              <select id="profile" name="profile" required><option value="">Loading filing profiles…</option></select>
+            </div>
+            <div class="rule-locks" aria-label="Enforced typography rules">
+              <div><span>Body</span><strong id="body-rule">14 pt</strong></div>
+              <div><span>Footnotes</span><strong id="footnote-rule">12 pt</strong></div>
+              <div><span>Authority links</span><strong>Explicit approval</strong></div>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <div class="action-note"><strong>The original stays untouched.</strong><span>OpenCounsel writes separate first-pass and final-review artifacts.</span></div>
+            <div class="actions"><button id="prepare-button" class="button secondary" type="submit">Prepare first pass</button></div>
+          </div>
+        </form>
+      </section>
+
+      <section id="processing-view" class="view narrow-view" hidden aria-labelledby="processing-title">
+        <div class="process-header">
+          <p class="eyebrow">Local deterministic workflow</p>
+          <h1 id="processing-title">Preparing the filing package</h1>
+          <p id="processing-message" class="lede" aria-live="polite">Inputs received</p>
+        </div>
+        <ol id="progress-list" class="progress-list"></ol>
+        <div class="processing-note"><span class="pulse" aria-hidden="true"></span>Your files remain in this local workspace while OpenCounsel works.</div>
+      </section>
+
+      <section id="results-view" class="view" hidden aria-labelledby="results-title">
+        <div class="result-header">
+          <div>
+            <p class="eyebrow success-text">First pass complete</p>
+            <h1 id="results-title">Prepared — lawyer review required</h1>
+            <p id="results-lede" class="lede">Review the prepared filing, then supply any requested opinions to complete source verification.</p>
+          </div>
+          <div class="result-actions">
+            <a id="download-package" class="button primary" href="#">Download first-pass package</a>
+            <button id="new-job" class="button secondary" type="button">Prepare another</button>
+          </div>
+        </div>
+
+        <div id="metric-grid" class="metric-grid" aria-label="Preparation results"></div>
+        <div class="workspace-card">
+          <div class="tab-list" role="tablist" aria-label="Filing review">
+            <button role="tab" aria-selected="true" aria-controls="filing-panel" id="filing-tab">Filing package</button>
+            <button role="tab" aria-selected="false" aria-controls="review-panel" id="review-tab">Review items</button>
+            <button role="tab" aria-selected="false" aria-controls="sources-panel" id="sources-tab">Citations &amp; sources</button>
+            <button role="tab" aria-selected="false" aria-controls="formatting-panel" id="formatting-tab">Formatting</button>
+            <button role="tab" aria-selected="false" aria-controls="why-panel" id="why-tab">Why did it decide that</button>
+            <button role="tab" aria-selected="false" aria-controls="audit-panel" id="audit-tab">Audit trail</button>
+          </div>
+
+          <section id="filing-panel" class="tab-panel" role="tabpanel" aria-labelledby="filing-tab">
+            <div class="preview-layout">
+              <div class="preview-column">
+                <div class="preview-toolbar">
+                  <span id="preview-label">Prepared filing</span>
+                  <div class="preview-toggle" role="group" aria-label="Choose brief preview">
+                    <button id="preview-before" type="button" aria-pressed="false">Before</button>
+                    <button id="preview-prepared" type="button" aria-pressed="true">Prepared</button>
+                  </div>
+                </div>
+                <div class="preview-frame"><iframe id="pdf-preview" title="Prepared filing PDF preview"></iframe></div>
+              </div>
+              <aside class="artifact-list">
+                <p class="panel-kicker">Delivery</p><h2>Review artifacts</h2>
+                <p>First-pass publication and, after approval, separate final linked copies.</p>
+                <a id="download-document" class="artifact-link" href="#"><span>Prepared brief</span><strong>DOCX</strong></a>
+                <a id="download-pdf" class="artifact-link" href="#"><span>Reference render</span><strong>PDF</strong></a>
+                <a id="download-original-pdf" class="artifact-link" href="#"><span>Original render</span><strong>PDF</strong></a>
+                <a id="download-corrections" class="artifact-link" href="#"><span>Correction ledger</span><strong>JSON</strong></a>
+                <a id="download-sources" class="artifact-link" href="#"><span>Authority source report</span><strong>JSON</strong></a>
+                <a id="download-roa-package" class="artifact-link" href="#"><span>Machine-readable ROA</span><strong>ZIP</strong></a>
+                <a id="download-final-package" class="artifact-link" href="#" hidden><span>Final review package</span><strong>ZIP</strong></a>
+                <a id="download-linked-document" class="artifact-link" href="#" hidden><span>Approved-link brief</span><strong>DOCX</strong></a>
+                <a id="download-linked-pdf" class="artifact-link" href="#" hidden><span>Approved-link render</span><strong>PDF</strong></a>
+              </aside>
+            </div>
+          </section>
+
+          <section id="review-panel" class="tab-panel" role="tabpanel" aria-labelledby="review-tab" hidden>
+            <div class="panel-heading"><div><p class="panel-kicker">Human judgment</p><h2>Items requiring review</h2></div><span id="review-count" class="count-chip"></span></div>
+            <div id="review-summary" class="review-summary"></div>
+          </section>
+
+          <section id="why-panel" class="tab-panel" role="tabpanel" aria-labelledby="why-tab" hidden>
+            <p>Each explanation comes from the correction ledger. Expand its receipt to trace the finding.</p>
+            <p><a id="download-conformance" class="button secondary" hidden>Download conformance checks</a>
+              <a id="download-process" class="button secondary" hidden>Download process receipt</a></p>
+            <p>Conformance checks identify supplied and missing evidence. Lawyer approval remains separate.</p>
+            <div class="panel-heading"><div><p class="panel-kicker">Plain language</p><h2>Why did it decide that</h2></div></div>
+            <p class="lede">Each ledger item is its class; the sentence is lifted from that class, the same every time, with the ledger note as its witness. Nothing here is generated by a model.</p>
+            <div id="why-list" class="review-summary"></div>
+          </section>
+          <section id="sources-panel" class="tab-panel" role="tabpanel" aria-labelledby="sources-tab" hidden>
+            <div class="panel-heading"><div><p class="panel-kicker">Authority provenance</p><h2>Complete source verification</h2></div><a id="source-report-link" class="text-link" href="#">Download full report</a></div>
+            <p class="panel-note">Upload each requested opinion into its declared authority slot. Identity and exact quotation checks are deterministic; characterization remains lawyer review.</p>
+            <div class="table-wrap"><table><thead><tr><th>Authority</th><th>Occurrences</th><th>Source status</th></tr></thead><tbody id="source-table"></tbody></table></div>
+            <form id="source-upload-form" class="intake-card" hidden>
+              <div class="section-heading"><div><span class="step-number">02</span><h2>Add requested opinions</h2></div><p>Each upload is bound to a stable authority ID.</p></div>
+              <div id="source-upload-list" class="review-summary"></div>
+              <div class="action-row"><div class="action-note"><strong>Fail-closed intake.</strong><span>Mismatched, malformed, duplicate, encrypted, and undeclared files are rejected.</span></div><button id="verify-sources" class="button primary" type="submit">Verify source PDFs</button></div>
+            </form>
+            <section id="link-review" class="intake-card" hidden aria-labelledby="link-review-title">
+              <div class="section-heading"><div><span class="step-number">03</span><h2 id="link-review-title">Review extracted PDF links</h2></div><p>Only durable-looking document URLs may be approved.</p></div>
+              <div id="link-list" class="review-summary"></div>
+              <div class="action-row"><div class="action-note"><strong>No automatic publisher linking.</strong><span>Search, session, request, fragment, and tracking URLs are rejected.</span></div><button id="approve-links" class="button primary" type="button">Create approved-link copies</button></div>
+            </section>
+          </section>
+
+          <section id="formatting-panel" class="tab-panel" role="tabpanel" aria-labelledby="formatting-tab" hidden>
+            <div class="panel-heading"><div><p class="panel-kicker">Filing profile</p><h2 id="profile-name">Applied court rules</h2></div></div>
+            <div id="formatting-grid" class="formatting-grid"></div>
+          </section>
+
+          <section id="audit-panel" class="tab-panel" role="tabpanel" aria-labelledby="audit-tab" hidden>
+            <div class="panel-heading"><div><p class="panel-kicker">Immutable provenance</p><h2>Hash-bound transformation</h2></div></div>
+            <dl id="audit-list" class="audit-list"></dl>
+            <div class="delete-row"><div><strong>Remove this local job</strong><span>Deletes its uploaded files and generated artifacts from this workspace.</span></div><button id="delete-job" class="delete-button" type="button">Delete local copy</button></div>
+          </section>
+        </div>
+
+        <section id="national-filing-scale" class="filing-scale-panel" aria-labelledby="filing-scale-title">
+          <header class="filing-scale-header">
+            <div>
+              <p class="eyebrow">BRIEF FILING SCALE</p>
+              <h2 id="filing-scale-title">Every brief filing requires professional production before it can be served or filed</h2>
+            </div>
+            <div class="filing-scale-denominator">
+              <span>Recurring filing workload</span>
+              <strong>Formatting, pagination, TOC and TOA, citation links, source checks, and final publication</strong>
+              <strong>3.5 reclaimed hours × $200 = $700 per filing package</strong>
+            </div>
+          </header>
+
+          <div class="filing-scale-scenarios">
+            <article class="filing-scale-primary">
+              <p>100,000 annual brief filings</p>
+              <strong class="filing-scale-value">$70 million</strong>
+              <span>of annual professional capacity</span>
+              <small>100,000 filing packages × 3.5 reclaimed hours × $200</small>
+            </article>
+            <aside class="filing-scale-secondary" aria-label="Scale scenario">
+              <span>Volume sensitivity</span>
+              <strong>250,000 annual brief filings: $175 million</strong>
+              <strong>500,000 annual brief filings: $350 million</strong>
+            </aside>
+          </div>
+
+          <p class="filing-scale-qualifier">
+            The model counts filing packages—the documents that must actually be formatted, checked, linked, reviewed, and published.
+          </p>
+
+          <details class="filing-scale-methodology">
+            <summary>Methodology</summary>
+            <div>
+              <ul>
+                <li>Unit value: 3.5 hours × $200 = $700 per filing package</li>
+                <li>Scope: brief filing packages requiring production and review</li>
+                <li>Work included: formatting, front matter, authority handling, source verification, and publication</li>
+                <li>Scenario A: 100,000 × $700 = $70,000,000</li>
+                <li>Scenario B: 250,000 × $700 = $175,000,000</li>
+                <li>Scenario C: 500,000 × $700 = $350,000,000</li>
+              </ul>
+            </div>
+          </details>
+        </section>
+      </section>
+
+      <section id="error-view" class="view narrow-view" hidden aria-labelledby="error-title">
+        <div class="error-card">
+          <p class="eyebrow error-text">Preparation stopped</p>
+          <h1 id="error-title">OpenCounsel could not complete this filing</h1>
+          <p id="error-message" class="lede"></p>
+          <button id="try-again" class="button primary" type="button">Return to intake</button>
+        </div>
+      </section>
+    </main>
+
+    <footer><span>OpenCounsel</span><span>Local-first legal document infrastructure</span></footer>
+  </body>
+</html>

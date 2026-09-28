@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencounsel.local/schemas/mcp-capabilities.schema.json",
+  "title": "OpenCounsel MCP Capabilities",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "service",
+    "service_version",
+    "tools",
+    "transports",
+    "network_policy",
+    "model_policy"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "service": {"const": "opencounsel"},
+    "service_version": {"type": "string", "minLength": 1},
+    "tools": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "transports": {
+      "type": "array",
+      "items": {"enum": ["stdio", "streamable-http"]},
+      "uniqueItems": true
+    },
+    "network_policy": {"const": "disabled"},
+    "model_policy": {"const": "disabled"}
+  }
+}

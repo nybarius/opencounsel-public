@@ -1,0 +1,103 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opencounsel"
+version = "0.1.0"
+description = "Privilege-first legal document infrastructure for personal practice"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "LicenseRef-Proprietary"
+authors = [{ name = "OpenCounsel contributors" }]
+dependencies = [
+    "alembic>=1.16,<2",
+    "eyecite>=2.7,<3",
+    "jsonschema>=4.25,<5",
+    "lxml>=5,<7",
+    "mcp>=1.28,<2",
+    "pydantic>=2.11,<3",
+    "psycopg[binary]>=3.2,<4",
+    "pypdf>=5.8,<7",
+    "python-multipart>=0.0.32,<1",
+    "python-docx>=1.2,<2",
+    "sqlalchemy>=2.0,<3",
+    "starlette>=1.3,<2",
+    "uvicorn>=0.51,<1",
+]
+
+[project.scripts]
+opencounsel = "opencounsel.cli:main"
+opencounsel-mcp = "opencounsel.mcp.server:main"
+
+[dependency-groups]
+dev = [
+    "hypothesis>=6.136,<7",
+    "httpx>=0.28,<1",
+    "lxml-stubs>=0.5,<1",
+    "mypy>=1.17,<2",
+    "pytest>=8.4,<10",
+    "pytest-cov>=6.2,<8",
+    "ruff>=0.12,<1",
+    "types-jsonschema>=4.25,<5",
+]
+
+[project.optional-dependencies]
+fuzz = ["atheris>=3.1,<4"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opencounsel"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-config --strict-markers"
+testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.12"
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+exclude = ["src/opencounsel/migrations/"]
+
+[tool.coverage.run]
+branch = true
+omit = [
+    "src/opencounsel/__main__.py",
+    "src/opencounsel/mcp/__main__.py",
+    "*/opencounsel/briefs/normalize_docx.py",
+    "*/opencounsel/documents/contracts.py",
+    "*/opencounsel/migrations/*",
+    "*/opencounsel/models/protocol.py",
+    "*/opencounsel/work_product/ir.py",
+    "*/opencounsel/work_product/projection.py",
+]
+source = ["opencounsel"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+omit = [
+    "*/opencounsel/briefs/normalize_docx.py",
+    "*/opencounsel/documents/contracts.py",
+    "*/opencounsel/models/protocol.py",
+    "*/opencounsel/work_product/ir.py",
+    "*/opencounsel/work_product/projection.py",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "RUF", "SIM", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/build_style_review.py" = ["I001"]
+"src/opencounsel/templates/audit.py" = ["E501", "I001"]
+"src/opencounsel/templates/build.py" = ["I001"]
+"tests/test_word_styles.py" = ["E501", "I001"]

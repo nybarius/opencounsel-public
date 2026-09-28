@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 270" role="img" aria-labelledby="t d">
+<title id="t">How a decision becomes a rule: model answer, witness, rule, receipt</title>
+<desc id="d">Four steps: one strong model answer; the witness, the read that separates the cases; the rule, which serves that class at no model cost; the receipt, which replays and explains the decision.</desc>
+<style>
+svg{color:#0F1D33}
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.mut{fill:#56647A}.card{fill:#F6F8FB;stroke:#D5DCE6}.hi{fill:#FFFFFF;stroke:#B07D1F}.acc{fill:#B07D1F}.accS{stroke:#B07D1F}
+.rule{stroke:#D5DCE6}.inv{fill:#FFFFFF}.bar{fill:#B07D1F}.core{fill:#0F1D33}.coreT{fill:#FFFFFF}.coreM{fill:#B9C5D6}
+@media (prefers-color-scheme:dark){svg{color:#E6ECF4}.mut{fill:#9CA9BB}.card{fill:#141D2A;stroke:#2A374A}.hi{fill:#161F2C;stroke:#E0B25A}.acc{fill:#E0B25A}.accS{stroke:#E0B25A}.rule{stroke:#2A374A}.inv{fill:#0F1D33}.bar{fill:#E0B25A}.core{fill:#E6ECF4}.coreT{fill:#0F1D33}.coreM{fill:#3D4A5E}}
+</style>
+<defs><marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="acc"/></marker></defs>
+<text x="24" y="36" font-size="20" font-weight="700" fill="currentColor">A decision becomes a rule</text>
+<text x="24" y="60" font-size="13" class="mut">A recurring question is answered by the rule, not the model, and every answer carries its receipt.</text>
+<g>
+<rect x="24" y="86" width="204" height="110" rx="12" class="card"/>
+<rect x="260" y="86" width="204" height="110" rx="12" class="card"/>
+<rect x="496" y="86" width="204" height="110" rx="12" class="card"/>
+<rect x="732" y="86" width="204" height="110" rx="12" class="hi" stroke-width="1.6"/>
+</g>
+<g stroke-width="2" class="accS"><path d="M230 141h26" marker-end="url(#arw)"/><path d="M466 141h26" marker-end="url(#arw)"/><path d="M702 141h26" marker-end="url(#arw)"/></g>
+<g font-size="14" font-weight="700">
+<circle cx="56" cy="118" r="13" class="acc"/><text x="56" y="123" text-anchor="middle" class="inv">1</text>
+<circle cx="292" cy="118" r="13" class="acc"/><text x="292" y="123" text-anchor="middle" class="inv">2</text>
+<circle cx="528" cy="118" r="13" class="acc"/><text x="528" y="123" text-anchor="middle" class="inv">3</text>
+<circle cx="764" cy="118" r="13" class="acc"/><text x="764" y="123" text-anchor="middle" class="inv">4</text>
+</g>
+<g font-size="15" font-weight="700" fill="currentColor">
+<text x="78" y="123">Model answer</text><text x="314" y="123">Witness</text><text x="550" y="123">Rule</text><text x="786" y="123">Receipt</text>
+</g>
+<g font-size="12.5" class="mut">
+<text x="44" y="158">One strong call, once</text>
+<text x="280" y="158">The read that separates</text><text x="280" y="176">one case from another</text>
+<text x="516" y="158">Serves the whole class</text><text x="516" y="176">at no model cost</text>
+<text x="752" y="158">Replayable, and explains</text><text x="752" y="176">itself in plain English</text>
+</g>
+<rect x="24" y="216" width="912" height="36" rx="10" fill="none" class="rule" stroke-dasharray="4 4"/>
+<text x="480" y="239" text-anchor="middle" font-size="12.5" fill="currentColor">“Why did it decide that” is the rule plus its witness. ExplanationLift: the same class gives the same sentence, every time.</text>
+</svg>

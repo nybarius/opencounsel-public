@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencounsel.local/schemas/brief-inspection.schema.json",
+  "title": "OpenCounsel Brief Inspection Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "revision_id",
+    "brief_sha256",
+    "size_bytes",
+    "paragraph_count",
+    "heading_count",
+    "part_counts",
+    "external_link_count"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "revision_id": {"type": "string", "pattern": "^rev-[0-9a-f]{64}$"},
+    "brief_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "size_bytes": {"type": "integer", "minimum": 0},
+    "paragraph_count": {"type": "integer", "minimum": 0},
+    "heading_count": {"type": "integer", "minimum": 0},
+    "part_counts": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "external_link_count": {"type": "integer", "minimum": 0}
+  }
+}

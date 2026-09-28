@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opencounsel.local/schemas/revision-manifest.schema.json",
+  "title": "OpenCounsel Revision Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "revision_id",
+    "status",
+    "input_sha256",
+    "input_size_bytes",
+    "input_object_key",
+    "created_at"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "revision_id": {"type": "string", "pattern": "^rev-[0-9a-f]{64}$"},
+    "status": {"const": "prepared"},
+    "input_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "input_size_bytes": {"type": "integer", "minimum": 0},
+    "input_object_key": {
+      "type": "string",
+      "pattern": "^sha256/[0-9a-f]{2}/[0-9a-f]{62}$"
+    },
+    "created_at": {"type": "string", "format": "date-time"}
+  }
+}

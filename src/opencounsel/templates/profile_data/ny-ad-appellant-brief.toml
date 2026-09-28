@@ -1,0 +1,57 @@
+schema_version = 1
+profile_id = "ny-ad-appellant-brief"
+version = "2026.1"
+jurisdiction = "New York"
+court = "Appellate Division"
+document_type = "appellant-brief"
+effective_from = 2026-07-15
+last_verified = 2026-07-15
+
+[page]
+paper = "letter"
+min_margin_in = 1.0
+page_numbering = "consecutive"
+
+[typography]
+allowed_font_kinds = ["proportional-serif"]
+body_min_pt = 14
+footnote_min_pt = 12
+body_line_spacing = "double"
+single_spaced_parts = ["headings", "footnotes", "block-quotes"]
+
+[length]
+maximum_words = 14000
+excluded_parts = [
+  "cover",
+  "table-of-contents",
+  "table-of-authorities",
+  "proof-of-service",
+  "printing-specification-statement",
+  "authorized-addendum",
+]
+certification_required = true
+
+[structure]
+required_sections = [
+  "table-of-contents",
+  "table-of-authorities",
+  "questions-presented",
+  "statement-of-case-and-facts",
+  "argument",
+  "conclusion",
+  "printing-specification-statement",
+]
+distinct_point_headings = true
+heading_numbering = "point-roman"
+
+[electronic]
+text_searchable_pdf = false
+metadata_removal = false
+bookmarks = "not-specified"
+docket_hyperlinks = "not-specified"
+pdf_page_labels = false
+
+[[sources]]
+title = "Practice Rules of the Appellate Division"
+authority = "22 NYCRR 1250.8"
+url = "https://www.nycourts.gov/ad3/clerk/rules-of-practice/Statewide-Practice-Rules-Part-1250.pdf"
