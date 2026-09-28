@@ -14,6 +14,13 @@ from pathlib import Path
 from privilege_audit import audit
 
 MESSAGE = "OpenCounsel audited public candidate"
+CANDIDATE_EMAIL = "candidate@" + "opencounsel" + "." + "local"
+CANDIDATE_IDENTITY = {
+    "GIT_AUTHOR_NAME": "OpenCounsel candidate builder",
+    "GIT_AUTHOR_EMAIL": CANDIDATE_EMAIL,
+    "GIT_COMMITTER_NAME": "OpenCounsel candidate builder",
+    "GIT_COMMITTER_EMAIL": CANDIDATE_EMAIL,
+}
 
 
 def _git(root: Path, *args: str, env: dict[str, str] | None = None) -> str:
@@ -101,7 +108,8 @@ def build(root: Path, ref: str) -> dict:
         args = ["commit-tree", tree, "-m", MESSAGE]
         if parent:
             args += ["-p", parent]
-        commit = _git(root, *args)
+        commit_env = dict(os.environ, **CANDIDATE_IDENTITY)
+        commit = _git(root, *args, env=commit_env)
         # Plain push rejects a racing non-fast-forward; never rewrite the remote.
         _git(root, "push", "origin", commit + ":" + full_ref)
         return dict(out, pushed=True, commit=commit, parent=parent)
